@@ -34,10 +34,47 @@ db.restaurant.insert({
     'password':'0928346'
 })
 
+db.restaurant.insert({
+	'name':'HEY Sushi!',
+	'location':'Aljunied MRT',
+    'contact':'67201245',
+    'email':'booking@hey.com',
+    'password':'034848'
+})
+
+db.restaurant.insert({
+	'name':'Jab Theory',
+	'location':'Kent Rich Park, #03-9092',
+    'contact':'N/A',
+    'email':'jabtheory@yeetmail.com',
+    'password':'039075'
+})
+
 <!-- Menu Items created -->
 db.createCollection("menuItems", {autoIndexId:true})
 
-db.restaurant.insert({
+db.menuItems.insert({
 	'name':'MillionDollar Nasi Lemak',
 	'shortDes':'Made with golden achovies, secret-marinate chicken, herbal rice and awesome chilli',
 })
+
+db.menuItems.insert({
+	'name':'Kway Chap',
+	'shortDes':'Plain old pork noodle soup with a colloquail sounding name',
+})
+
+db.menuItems.insert({
+	'name':'Salted Egg Fries',
+	'shortDes':'Salty and savoury!',
+})
+
+<!-- amend the db to accomodate menu items -->
+
+db.amenities.update({_id:ObjectId('5d35fb429957d32e05ca955e')}, {
+ $set: {
+  'description':'Black box'
+ }
+ }
+);
+
+
