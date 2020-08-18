@@ -2,10 +2,24 @@
 {% block content %}
 <h1>All Reviews</h1>
 
-<ul>
-    {%for each_review in reviews}
-    <li>{{each_review.title}}</li>
+<div class ="container row">
+    {%for each_review in reviews%}
+	<div class="card m-3" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">{{each_review.title}}</h5>
+			<p class="card-text">{{each_review.review}}</p>
+			<ul>
+				<li>{{each_review.ratingFood}}</li>
+				<li>{{each_review.ratingRes}}</li>
+			<ul>
+			
+            <a href="#" class="btn btn-primary">{{each_review.restaurant.}}</a>
+	
+    	</div>
+	</div>
     {% endfor%}
-</ul>
+</div>
+
+
 
 {% endblock %}

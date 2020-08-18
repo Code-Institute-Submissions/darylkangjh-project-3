@@ -3,21 +3,22 @@ import pymongo
 import os
 from dotenv import load_dotenv
 
-
-
 app = Flask(__name__)
 
+load_dotenv()
+
 MONGO_URI=os.environ.get('MONGO_URI'),
-DB_NAME='EatRank'
 
 # Mongo Client 
-client = pymongo.MongoClient(MONGO_URI),
+client = pymongo.MongoClient(MONGO_URI)
+db = client['EatRank']
 
 # Routes Below 
-@app.route('/')
+@app.route('/all')
 def show_reviews():
-    all_reviews = client[DB_NAME].review.find()
-    return render_template('all_review.template.html',
+    all_reviews = db.review.find()
+
+    return render_template('show/all_review.template.html',
                             reviews=all_reviews)
 
 # "magic code" -- boilerplate
