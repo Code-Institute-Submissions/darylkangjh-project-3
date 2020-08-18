@@ -168,10 +168,52 @@ db.createCollection("review", {autoIndexId:true})
 db.review.insert({
 	'title':'Awesome food! Never really tasted something this wonderful!',
 	'review':'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas molestie nec diam at convallis. Proin augue urna, pharetra eu iaculis sit amet, rhoncus eget augue. Pellentesque volutpat leo at rhoncus auctor. Etiam blandit magna lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. ',
-    'rating':10,
+    'ratingFood':10,
+    'ratingRes':10,
     'cost':9,
-    'customer':[
-        
-    ]
-
+    'customer':{
+        '_id':ObjectId('5f3a272738a68d1d0d2d0bf6'),
+        'name':'Peter Gan'
+    },
+    'restaurant':{
+        '_id':ObjectId('5f3a283b38a68d1d0d2d0bf9'),
+        'name':'Food Alley @ RV'
+    }
 })
+
+
+db.review.insert({
+	'title':'Could be better...',
+	'review':'Pharetra eu iaculis sit amet, rhoncus eget augue. Pellentesque volutpat leo at rhoncus auctor. Etiam blandit magna lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. ',
+    'ratingFood':2,
+    'ratingRes':2,
+    'cost':10,
+    'customer':{
+        '_id':ObjectId('5f3a275538a68d1d0d2d0bf7'),
+        'name':'Paige Sng'
+    },
+    'restaurant':{
+        '_id':ObjectId('5f3a283b38a68d1d0d2d0bf9'),
+        'name':'Food Alley @ RV'
+    }
+})
+
+
+db.review.insert({
+	'title':'Interesting name, mediocre food',
+	'review':'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+    'ratingFood':6,
+    'ratingRes':7,
+    'cost':2,
+    'customer':{
+        '_id':ObjectId('5f3a279b38a68d1d0d2d0bf8'),
+        'name':'Gabriel DeCruz'
+    },
+    'restaurant':{
+        '_id':ObjectId('5f3a9b4f2860f9421568db8b'),
+        'name':'Jab Theory'
+    }
+})
+
+// READ Part of database
+db.review.find({'ratingFood':6}).pretty.limit(1)

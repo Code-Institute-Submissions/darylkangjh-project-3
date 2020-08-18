@@ -1,0 +1,11 @@
+{% extends 'base.template.html' %}
+{% block content %}
+<h1>All Reviews</h1>
+
+<ul>
+    {%for each_review in reviews}
+    <li>{{each_review.title}}</li>
+    {% endfor%}
+</ul>
+
+{% endblock %}
