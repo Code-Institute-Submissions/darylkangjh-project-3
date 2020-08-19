@@ -6,7 +6,10 @@
     {% for each_review in review %}
 	<div class="card border-light m-3" style="width: 18rem;">
 		<div class="card-body">
+            <small class="card-text">{{each_review.restaurant.name}}</small>
 			<h5 class="card-title">{{each_review.title}}</h5>
+
+            <br/>
 			<p class="card-text">{{each_review.review}}</p>
             </br>
 

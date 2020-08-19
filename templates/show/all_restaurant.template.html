@@ -1,0 +1,22 @@
+{% extends 'base.template.html' %}
+{% block content %}
+<h1>All Reviews</h1>
+
+<div class ="container row">
+    {% for each_restaurant in restaurant %}
+	<div class="card border-light m-3" style="width: 18rem;">
+		<div class="card-body">
+            <small class="card-text">{{each_restaurant.location}}</small>
+			<h5 class="card-title">{{each_restaurant.name}}</h5>
+
+            <label class='h6'>Location</label>
+            <p>{{each_restaurant.location}}</p>
+            <label class='h6'>Contact</label>
+			<p>{{each_restaurant.contact}}</p>
+            <p>{{each_restaurant.email}}</p>
+            <br/>
+    	</div>
+	</div>
+    {% endfor%}
+</div>
+{% endblock %}
