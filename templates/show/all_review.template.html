@@ -3,23 +3,24 @@
 <h1>All Reviews</h1>
 
 <div class ="container row">
-    {%for each_review in reviews%}
-	<div class="card m-3" style="width: 18rem;">
+    {% for each_review in review %}
+	<div class="card border-light m-3" style="width: 18rem;">
 		<div class="card-body">
 			<h5 class="card-title">{{each_review.title}}</h5>
 			<p class="card-text">{{each_review.review}}</p>
-			<ul>
-				<li>{{each_review.ratingFood}}</li>
-				<li>{{each_review.ratingRes}}</li>
-			<ul>
-			
-            <a href="#" class="btn btn-primary">{{each_review.restaurant.}}</a>
+            </br>
+
+            <label class='h6'>Food Rating</label>
+            <p>{{each_review.ratingFood}}</p>
+            <label class='h6'>Restaurant Rating</label>
+			<p>{{each_review.ratingRes}}</p>
+            <br/>
+            <div class = 'd-flex justify-content-end'>
+            <small class="text-muted">{{each_review.customer.name}}</small>
+            </div>
 	
     	</div>
 	</div>
     {% endfor%}
 </div>
-
-
-
 {% endblock %}

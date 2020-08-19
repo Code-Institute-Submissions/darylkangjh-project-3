@@ -18,8 +18,8 @@ db = client['EatRank']
 def show_reviews():
     all_reviews = db.review.find()
 
-    return render_template('show/all_review.template.html',
-                            reviews=all_reviews)
+    return render_template('show/all_review.template.html', 
+                    review = all_reviews)
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
