@@ -55,22 +55,54 @@ def process_create_reviews():
     'location': location,
     'contact': contact,
     'email': email,
+    'menuItems':[],
     }
 
     db.restaurant.insert_one(new_record)
     return redirect(url_for('show_restaurants'))  
-    
 
 
-@app.route('/create-menu/update/<restaurant_id>')
-def show_reviews(restaurant_id):
-    menu = db.restaurant.find_one({
+
+@app.route('/restuarants/menu/<restaurant_id>')
+def show_add_menu_items(restaurant_id):
+    restaurant = db.restaurant.find_one({
         '_id':ObjectId(restaurant_id)
     })
 
+    return render_template('create/create_menuItems.template.html', restaurant = restaurant)
+
+@app.route('/restuarants/menu/<restaurant_id>', methods =["POST"])
+def add_menu_items(restaurant_id):
+    name = request.form.get('item-name')
+    shortDes = request.form.get('short-des')
+
+    menuItems ={
+        'name':name,
+        'shortDes':shortDes
+    }
+
+    db.menuItems.insert_one(menuItems)
+
+    # Update the restaurant
+    menu_item = db.menuItems.find_one({
+        'name':name
+    })
     
-    return render_template('show/all_review.template.html', 
-                    review = all_reviews)
+    db.restaurant.update({
+        '_id':ObjectId(restaurant_id)
+    },{
+            '$push':{
+                'menuItems':{
+                    'item':menu_item,
+                }
+            }
+        }
+    )
+
+
+    return redirect(url_for('show_restaurants'))
+
+
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
