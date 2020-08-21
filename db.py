@@ -61,7 +61,51 @@ def process_create_reviews():
     db.restaurant.insert_one(new_record)
     return redirect(url_for('show_restaurants'))  
 
+# Show for all customer (admin)
+@app.route('/show-customers')
+def show_customer():
+    all_customer = db.customer.find()
 
+    return render_template('show/all_customer.template.html', 
+                    customer = all_customer)
+
+# Customer account login
+@app.route('/show-customer-account/<customer_id>')
+def show_customer_account(customer_id):
+    customer = db.customer.find_one({
+        'customer._id:': ObjectId(customer_id),
+    })
+    return render_template('show/one_customer.template.html', customer=customer)
+
+# Create a customer account
+@app.route('/create-customer')
+def create_customers():
+    all_customer = db.customer.find()
+
+    return render_template('create/create_customer.template.html', 
+                    customer = all_customer)  
+
+@app.route('/create-customer', methods=['POST'])
+def process_create_customers():
+    
+    # Get Information from form 
+    name = request.form.get('name')
+    contact = request.form.get('contact')
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    # Do validation later (focus on functionality first)
+
+    # Insert new customer 
+    new_record = {
+    'name': name,
+    'email': email,
+    'contact': contact,
+    'password': password,
+    }
+
+    db.customer.insert_one(new_record)
+    return redirect(url_for('show_customer_account'))  
 
 @app.route('/restuarants/menu/<restaurant_id>')
 def show_add_menu_items(restaurant_id):
@@ -96,11 +140,10 @@ def add_menu_items(restaurant_id):
                     'item':menu_item,
                 }
             }
-        }
+       }
     )
-
-
     return redirect(url_for('show_restaurants'))
+
 
 
 
