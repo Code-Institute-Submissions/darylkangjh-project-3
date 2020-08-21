@@ -69,13 +69,21 @@ def show_customer():
     return render_template('show/all_customer.template.html', 
                     customer = all_customer)
 
-# Customer account login
+# Customer account and all that she commented on
 @app.route('/show-customer-account/<customer_id>')
 def show_customer_account(customer_id):
+    print(customer_id)
     customer = db.customer.find_one({
-        'customer._id:': ObjectId(customer_id),
+        '_id': ObjectId(customer_id),
     })
-    return render_template('show/one_customer.template.html', customer=customer)
+
+     all_reviews = db.review.find_one({
+         '_id':ObjectId(customer_id),
+     })
+    
+    
+    print(customer)
+    return render_template('show/one_customer.template.html', customer=customer, all)
 
 # Create a customer account
 @app.route('/create-customer')
