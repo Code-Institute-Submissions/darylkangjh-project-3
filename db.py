@@ -11,42 +11,15 @@ app = Flask(__name__)
 
 load_dotenv()
 
-app.secret_key = os.environ,get('SECRET_KEY')
+
+app.secret_key = os.environ.get('SECRET_KEY')
 MONGO_URI=os.environ.get('MONGO_URI'),
 
 # Mongo Client 
 client = pymongo.MongoClient(MONGO_URI)
 db = client['EatRank']
 
-# Login Manager
-login_manager= flask_login.LoginManager()
-login_manager.init_app(db)
 
-class User(flask_login.UserMixin):
-    pass
-
-def encrypt_password(plaintext):
-    return pbkdf2_sha256.hash(plaintext)
-
-def verify_password(plaintext, encrypted):
-    return pbkdf2_sha256.verify(plaintext, encrypted)
-
-@login_manager.user_loader
-def user_loader(email):
-
-    # attempt to get user
-    user_in_db = client[DB_NAME]['customer'].find_one({
-        "email":email
-    })
-
-    customer = Customer()
-    customer.id = customer_in_db['email']
-
-    # if found
-    if customer:
-        return customer 
-    else: 
-        return None
  
 # SHOW Routes Below 
 @app.route('/')
@@ -193,7 +166,7 @@ def create_review():
 
 
 @app.route('/create-review', methods=['POST'])
-def process_create_reviews():
+def process_create_review():
     
     # Get Information from form 
     title = request.form.get('title')
@@ -209,16 +182,22 @@ def process_create_reviews():
     # Get the restaurant id 
     # Insert new restaurant 
     new_review = {
-    'title' : title
-    'review' : review
-    'ratingFood' : ratingFood
-    'ratingRes' : ratingRes
-    'cost' : cost
-    'restaurantName' : restaurantName
+    'title': title,
+    'review': review,
+    'ratingFood': ratingFood,
+    'ratingRes': ratingRes,
+    'cost': cost,
+    'restaurantName': restaurantName
     }
 
-    db.restaurant.insert_one(new_record)
+    db.restaurant.insert_one(new_review)
     return redirect(url_for('show_restaurants'))  
+
+@app.route('/register')
+def register():
+    return render_template('register.template.html')
+
+# Login 
 
 
 # "magic code" -- boilerplate
