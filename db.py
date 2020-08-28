@@ -198,7 +198,7 @@ def process_create_review():
 def register():
     return render_template('register.template.html')
 
-@app.route('/register')
+@app.route('/register', methods=['POST'] )
 def process_register():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -207,10 +207,18 @@ def process_register():
         'email':email,
         'password':password
     })
+
+    return redirect(url_for('show_reviews'))
+
 # Login 
 @app.route('/login')
 def login():
     return render_template('login.template.html')
+
+@app.route('/login', methods=['POST'])
+def process_login():
+    return "processing_login_wip"
+
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
