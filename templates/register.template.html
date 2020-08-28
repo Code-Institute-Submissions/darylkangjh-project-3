@@ -1,15 +1,8 @@
 {% extends 'base.template.html' %}
 
+
 {% block content %}
 <h1>Register an account</h1>
-
-<form method='POST'>
-    <label>Email</label>
-        <input type="text" name="email" class="form-control">
-        <br/>
-    <label>Password</label>
-        <input type="password" name="password" class="form-control">
-        <br/>
-        <input type="submit" value="register" class="btn btn-primary"/>
-</form>
+{% include 'userregister.template.html' %}
+<input type="submit" value="register" class="btn btn-primary"/>
 {% endblock %}

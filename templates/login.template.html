@@ -1,9 +1,7 @@
-<form method="POST">
-<label>Email</label>
-<input type="text" name="email" class="form-control">
-<br/>
-<label>Password</label>
-<input type="password" name="password" class="form-control">
-<br/>
-<input type="submit" value="Create" class="btn btn-primary">
-</form>
+{% extends 'base.template.html' %}
+
+{% block content %}
+<h1>Log In to your account</h1>
+{% include 'userregister.template.html' %}
+<input type="submit" value="register" class="btn btn-primary"/>
+{% endblock %}

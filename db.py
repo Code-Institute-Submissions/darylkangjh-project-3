@@ -193,12 +193,24 @@ def process_create_review():
     db.restaurant.insert_one(new_review)
     return redirect(url_for('show_restaurants'))  
 
+# register page
 @app.route('/register')
 def register():
     return render_template('register.template.html')
 
-# Login 
+@app.route('/register')
+def process_register():
+    email = request.form.get('email')
+    password = request.form.get('password')
 
+    db.users.insert_one({
+        'email':email,
+        'password':password
+    })
+# Login 
+@app.route('/login')
+def login():
+    return render_template('login.template.html')
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
