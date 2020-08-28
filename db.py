@@ -19,6 +19,30 @@ MONGO_URI=os.environ.get('MONGO_URI'),
 client = pymongo.MongoClient(MONGO_URI)
 db = client['EatRank']
 
+class User(flask_login.UserMixin):
+    pass
+
+login_manager = flask_login.LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+
+@login_manager.user_loader
+def user_loader(email):
+    customer = db.customer.find_one({
+        'email': email
+    })
+
+    if customer:
+        user_object = User()
+        user_object.id = customer['email']
+        user_object.name = customer['name']
+        return user_object
+    
+    else:
+        return None 
+        #please report error here later
+
 
  
 # SHOW Routes Below 
@@ -119,6 +143,30 @@ def process_create_customers():
     db.customer.insert_one(new_record)
     return redirect(url_for('show_customer_account'))  
 
+# Customer Login 
+@app.route('/login')
+def login():
+    return render_template('login.template.html')
+
+@app.route('/login', methods=['POST'])
+def process_login():
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    customer = db.customer.find_one({
+        'email' : email
+    })
+
+    if customer and customer["password"] == password:
+        user_object = User()
+        user_object.id = customer['email']
+        user_object.name = customer['name']
+        flask_login.login_user(user_object)
+        return redirect(url_for('show_reviews'))
+
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/restuarants/menu/<restaurant_id>')
 def show_add_menu_items(restaurant_id):
     restaurant = db.restaurant.find_one({
@@ -127,6 +175,8 @@ def show_add_menu_items(restaurant_id):
 
     return render_template('create/create_menuItems.template.html', restaurant = restaurant)
 
+
+# Restaurants below
 @app.route('/restuarants/menu/<restaurant_id>', methods =["POST"])
 def add_menu_items(restaurant_id):
     name = request.form.get('item-name')
@@ -193,31 +243,7 @@ def process_create_review():
     db.restaurant.insert_one(new_review)
     return redirect(url_for('show_restaurants'))  
 
-# register page
-@app.route('/register')
-def register():
-    return render_template('register.template.html')
 
-@app.route('/register', methods=['POST'] )
-def process_register():
-    email = request.form.get('email')
-    password = request.form.get('password')
-
-    db.users.insert_one({
-        'email':email,
-        'password':password
-    })
-
-    return redirect(url_for('show_reviews'))
-
-# Login 
-@app.route('/login')
-def login():
-    return render_template('login.template.html')
-
-@app.route('/login', methods=['POST'])
-def process_login():
-    return "processing_login_wip"
 
 
 # "magic code" -- boilerplate
