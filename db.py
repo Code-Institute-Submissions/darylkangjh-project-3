@@ -50,8 +50,26 @@ def user_loader(email):
 def show_reviews():
     all_reviews = db.review.find()
 
-    return render_template('show/all_review.template.html', 
-                    review = all_reviews)
+    return render_template('show/all_review.template.html', review = all_reviews)
+
+
+# Search Function for all restaurant for customer ease of access (they can search what restaurant to visit)
+@app.route('/search-restaurants')
+def search():
+    required_restaurant_name= request.args.get('restaurant_name')
+
+    criteria={}
+
+    if required_restaurant_name:
+        criteria['name'] = {
+            '$regex': required_restaurant_name,
+            '$options':'i' 
+        }
+
+    all_restaurants=db.restaurant.find(criteria)
+
+    return render_template('show/search_restaurant.template.html', restaurant=all_restaurants)
+
 
 @app.route('/show-restaurants')
 def show_restaurants():
