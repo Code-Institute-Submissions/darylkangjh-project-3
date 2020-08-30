@@ -1,6 +1,10 @@
 {% extends 'base.template.html' %}
 {% block content %}
+
+<div>
 <h1>All Restaurants</h1>
+<small><a href='/create-restaurant'>add a restaurant</a></small>
+</div>
 
 <div class ="container row">
     {% for each_restaurant in restaurant %}
@@ -9,9 +13,8 @@
             <small class="card-text">{{each_restaurant.location}}</small>
 			<h5 class="card-title">{{each_restaurant.name}}</h5>
 
-            <label class='h6'>Location</label>
-            <p>{{each_restaurant.location}}</p>
-            <label class='h6'>Contact</label>
+            <label class="h6">Location</label>
+            <label class="h6">Contact</label>
 			<p>{{each_restaurant.contact}}</p>
             <p>{{each_restaurant.email}}</p>
             <br/>

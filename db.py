@@ -65,7 +65,7 @@ def search():
             '$regex': required_restaurant_name,
             '$options':'i' 
         }
-
+ 
     all_restaurants=db.restaurant.find(criteria)
 
     return render_template('show/search_restaurant.template.html', restaurant=all_restaurants)
@@ -76,7 +76,7 @@ def show_restaurants():
     all_restaurants = db.restaurant.find()
 
     return render_template('show/all_restaurant.template.html', 
-                    restaurant = all_restaurants)
+                    restaurant =all_restaurants)
 
 # CREATE Routes Below 
 @app.route('/create-restaurant')
@@ -127,9 +127,10 @@ def show_customer_account(customer_id):
     })
    
     all_reviews = db.review.find({
-        'customer._id':ObjectId(customer_id),
+        'customer': ObjectId(customer_id),
     })
-    return render_template('show/one_customer.template.html', customer=customer, review=all_reviews)
+    return render_template('show/one_customer.template.html', customer=customer, 
+                           review=all_reviews)
 
 # Create a customer account
 @app.route('/create-customer')
@@ -159,7 +160,7 @@ def process_create_customers():
     }
 
     db.customer.insert_one(new_record)
-    return redirect(url_for('show_customer_account'))  
+    return redirect(url_for())
 
 # Customer Login 
 @app.route('/login')
@@ -180,7 +181,7 @@ def process_login():
         user_object.id = customer['email']
         user_object.name = customer['name']
         flask_login.login_user(user_object)
-        return redirect(url_for('show_reviews'))
+        return redirect(url_for('show_customer_account'))
 
     else:
         return redirect(url_for('login'))
@@ -194,6 +195,7 @@ def logout():
 @flask_login.login_required
 def secret():
     return "Secret Area"
+
 
 # Restaurants below
 @app.route('/restuarants/menu/<restaurant_id>')
