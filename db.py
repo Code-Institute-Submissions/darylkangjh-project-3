@@ -100,7 +100,7 @@ def show_customer():
     return render_template('show/all_customer.template.html', 
                     customer = all_customer)
 
-# Customer account and all that she commented on
+# Customer account and all that he/she commented on
 @app.route('/show-customer-account/<customer_id>')
 def show_customer_account(customer_id):
 
@@ -167,6 +167,17 @@ def process_login():
     else:
         return redirect(url_for('login'))
 
+@app.route('/logout')
+def logout():
+    flask_login.logout_user()
+    return redirect(url_for('login'))
+
+@app.route('/secret')
+@flask_login.login_required
+def secret():
+    return "Secret Area"
+
+# Restaurants below
 @app.route('/restuarants/menu/<restaurant_id>')
 def show_add_menu_items(restaurant_id):
     restaurant = db.restaurant.find_one({
@@ -175,8 +186,6 @@ def show_add_menu_items(restaurant_id):
 
     return render_template('create/create_menuItems.template.html', restaurant = restaurant)
 
-
-# Restaurants below
 @app.route('/restuarants/menu/<restaurant_id>', methods =["POST"])
 def add_menu_items(restaurant_id):
     name = request.form.get('item-name')

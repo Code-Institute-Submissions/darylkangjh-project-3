@@ -3,6 +3,12 @@
 
 
 <h1>All Reviews</h1>
+{% if current_user.is_authenticated %}
+<p> Hello! {{current_user.name}}</p>
+{% else: %}
+    Please Login
+{% endif %}
+
 <div class ="container row">
     {% for each_review in review %}
 	<div class="card border-light m-3" style="width: 18rem;">
