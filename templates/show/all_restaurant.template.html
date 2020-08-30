@@ -18,8 +18,8 @@
 			<p>{{each_restaurant.contact}}</p>
             <p>{{each_restaurant.email}}</p>
             <br/>
-            <input type="submit" value="menu" class="btn btn-primary">
 
+            <a href="/show-restaurants/{{each_restaurant._id}}" class="btn btn-primary">Menu</a>
     	</div>
 	</div>
     {% endfor%}

@@ -1,0 +1,18 @@
+{% extends 'base.template.html' %}
+{% block content %}
+
+<br/>
+<div>
+<h1>Menu Item for {{restaurant.name}}</h1>
+</div>
+
+<div class ="container row">
+    {% for each_item in menu %}
+	<div class="card border-light m-3" style="width: 18rem;">
+		<div class="card-body">
+			<h5 class="card-title">{{each_item.name}}</h5>
+    	</div>
+	</div>
+    {% endfor%}
+</div>
+{% endblock %}
