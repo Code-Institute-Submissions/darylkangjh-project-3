@@ -1,10 +1,15 @@
 {% extends 'base.template.html' %}
 {% block content %}
 
-<div>
+<div class="ml-5">
 <h1>All Restaurants</h1>
 <small><a href='/create-restaurant'>add a restaurant</a></small>
+<form method = "GET" class="form-inline">
+    <input type ="text" name="restaurant_name" class="form-control"/>
+    <input class="btn btn-primary ml-2" type = "submit" value = "Search"/>
+</form>
 </div>
+
 
 <div class ="container row">
     {% for each_restaurant in restaurant %}

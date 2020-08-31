@@ -1,23 +1,20 @@
 {% extends 'base.template.html'%}
 
 {% block content %}
-
-<h3> Search for restaurants </h3>
-<form method = "GET" class="form-inline">
-    <label class="mr-2">Restaurant name:</label>
-    <input type ="text" name="restaurant_name" class="form-control"/>
-    <input class="btn btn-primary ml-2" type = "submit" value = "Search"/>
-</form>
+<div class=ml-5>
+<h1 style="color: white;"> Search for restaurants </h1>
 
 
-<h3>Restaurants</h3>
+<br/>
+<br/>
+<h3 style="color: white;">Restaurants</h3>
 
 <ul>
 
     {% for r in restaurant%}
-        <li> {{r.name}}</li>
+        <li style="color: white;"> {{r.name}}</li>
     {% endfor %}
 
 </ul>
-
+</div>
 {% endblock %}

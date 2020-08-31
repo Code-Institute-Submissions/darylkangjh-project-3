@@ -35,6 +35,7 @@ def user_loader(email):
 
     if customer:
         user_object = User()
+        user_object.account_id=customer['_id']
         user_object.id = customer['email']
         user_object.name = customer['name']
         return user_object
@@ -45,16 +46,23 @@ def user_loader(email):
 
 
  
-# SHOW Routes Below 
+
+# Home page ( this page will be static and show the various routes)
 @app.route('/')
+def home():
+    return render_template('home.template.html')
+
+# Reviews (Show all reviews// user can read reviews similar to reddit post)
+@app.route('/review')
 def show_reviews():
     all_reviews = db.review.find()
 
     return render_template('show/all_review.template.html', review = all_reviews)
 
 
-# Search Function for all restaurant for customer ease of access (they can search what restaurant to visit)
-@app.route('/search-restaurants')
+
+# Show all available restaurants and the link to their page
+@app.route('/show-restaurants')
 def search():
     required_restaurant_name= request.args.get('restaurant_name')
 
@@ -67,17 +75,11 @@ def search():
         }
  
     all_restaurants=db.restaurant.find(criteria)
-
-    return render_template('show/search_restaurant.template.html', restaurant=all_restaurants)
-
-
-@app.route('/show-restaurants')
-def show_restaurants():
-    all_restaurants = db.restaurant.find()
-
+    
     return render_template('show/all_restaurant.template.html', 
                            restaurant =all_restaurants)
 
+# Show one restaurant after selecting their ID, (To display Menu and details for people to consider)
 @app.route('/show-restaurants/<restaurant_id>')
 def show_one_restaurant(restaurant_id):
     one_restaurant=db.restaurant.find_one({
@@ -89,17 +91,12 @@ def show_one_restaurant(restaurant_id):
     return render_template('show/one_restaurant.template.html', restaurant=one_restaurant, menu=menu_item )
 
 
-
-
-# CREATE Routes Below 
+# Create Restaurant (route)
 @app.route('/create-restaurant')
-def create_reviews():
-    all_reviews = db.review.find()
+def create_restaurant():
+    return render_template('create/create_restaurant.template.html')  
 
-    return render_template('create/create_restaurant.template.html', 
-                    review = all_reviews)  
-
-
+# Create Restaurant (get details from form to insert to DB)
 @app.route('/create-restaurant', methods=['POST'])
 def process_create_reviews():
     
@@ -121,11 +118,9 @@ def process_create_reviews():
     }
 
     db.restaurant.insert_one(new_record)
-    return redirect(url_for('show_restaurants'))  
+    return redirect(url_for('show_restaurants'))
 
-
-
-# Customer Login 
+# Customer Login & Logout Below
 @app.route('/login')
 def login():
     return render_template('login.template.html')
@@ -144,7 +139,7 @@ def process_login():
         user_object.id = customer['email']
         user_object.name = customer['name']
         flask_login.login_user(user_object)
-        return redirect(url_for('show_customer_account'))
+        return redirect(url_for('show_reviews'))
 
     else:
         return redirect(url_for('login'))
@@ -157,9 +152,9 @@ def logout():
 @app.route('/secret')
 @flask_login.login_required
 def secret():
-    return "Secret Area"
+        return "Secret Area"
 
-# Show for all customer (admin)
+# Show for all customer (admin) This is not meant for the site and should be kept "secret"
 @app.route('/show-customers')
 def show_customer():
     all_customer = db.customer.find()
@@ -171,15 +166,13 @@ def show_customer():
 @app.route('/show-customer-account/<customer_id>')
 def show_customer_account(customer_id):
 
-    customer = db.customer.find_one({
-        '_id': ObjectId(customer_id),
-    })
-   
     all_reviews = db.review.find({
-        'customer': ObjectId(customer_id),
+        'customer._id': ObjectId(customer_id),
     })
-    return render_template('show/one_customer.template.html', customer_id=customer_id, 
-                           review=all_reviews)
+
+    # print(flask_login.current_user.is_authenticated)
+    return render_template('show/one_customer.template.html',review=all_reviews)
+
 
 # Create a customer account
 @app.route('/create-customer')
@@ -210,7 +203,7 @@ def process_create_customers():
 
     db.customer.insert_one(new_record)
 
-    return redirect(url_for("/login"))
+    return redirect(url_for("login"))
 
 # Restaurants below
 @app.route('/restuarants/menu/<restaurant_id>')
@@ -257,10 +250,11 @@ def add_menu_items(restaurant_id):
 def create_review():
     all_reviews = db.review.find()
 
-    return render_template('create/create_.template.html', 
+    return render_template('create/create_review.template.html', 
                             review = all_reviews)  
 
 
+#get data from form 
 @app.route('/create-review', methods=['POST'])
 def process_create_review():
 
@@ -289,6 +283,37 @@ def process_create_review():
     db.restaurant.insert_one(new_review)
     return redirect(url_for('show_restaurants'))
 
+# Review edit 
+@app.route('/amend-review/<review_id>')
+def show_update_review(review_id):
+    review = db.review.find_one({
+        '_id': ObjectId(review_id)
+    })
+    return render_template('edit/edit_review.template.html', review=review)
+
+# Actual edit (Methods = post)
+@app.route('/amend-review/<review_id>', methods=["POST"])
+def process_show_update_review(review_id):
+    title = request.form.get('title')
+    review = request.form.get('review')
+    ratingFood = request.form.get('ratingFood')
+    ratingRes = request.form.get('ratingRes')
+    cost = request.form.get('cost')
+    restaurantName = request.form.get('restaurantName')
+
+    db.review.update_one({
+        '_id': ObjectId(review_id)
+    }, {
+        '$set': {
+            'title': title,
+            'review': review,
+            'ratingFood': ratingFood,
+            'ratingRes': ratingRes,
+            'cost': cost,
+            'restaurantName': restaurantName
+        }
+    })
+    return redirect(url_for('show_reviews'))
 
 
 # "magic code" -- boilerplate

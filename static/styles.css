@@ -1,0 +1,46 @@
+.navbar {
+    background-color: #00a653;
+    height:10vh;
+}
+.navbar-brand{
+    color:white;
+}
+.nav-link {
+    color:white;
+}
+
+.image-1{
+    background-image: url('image/347.jpg');
+    background-color: rgba(0, 166, 83);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+
+
+body {
+    background-color:  #00a653;
+}
+
+.jumbotron{
+    background-image: url('image/1577.jpg');
+    background-color: rgba(0, 166, 83);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    height: 80vh!important;
+    border-radius: 0 !important;
+}
+
+
+h1.header-title{
+    color: #00743a!important;
+}
+
+.lead{
+    color: #00743a!important;
+}
+
+.small{
+    color: #00743a!important;
+}

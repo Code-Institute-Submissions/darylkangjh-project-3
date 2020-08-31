@@ -1,15 +1,16 @@
 {% extends 'base.template.html' %}
 {% block content %}
 
-
-<h1>All Reviews</h1>
+<br/>
+<div class="ml-5">
+<h1 class="nav-link">All Reviews</h1>
 {% if current_user.is_authenticated %}
-<p> Hello! {{current_user.name}}</p>
+<p class="nav-link"> Hello <a href="/show-customer-account/{{current_user.account_id}} " style="color:#00542a;">{{current_user.name}}</a>! Would you like to <a href="/create-review" style="color:#00542a;">contribute</a>?</p>
 {% else: %}
    <div class="small"> Please <a href="/login">Login</a> | Don't have an account? <a href="/create-customer">Sign-up</a> </div>
 {% endif %}
-
-<div class ="container row">
+</div>
+<div class ="container ml-5 row">
     {% for each_review in review %}
 	<div class="card border-light m-3" style="width: 18rem;">
 		<div class="card-body">
