@@ -1,9 +1,16 @@
 {% extends 'base.template.html' %}
 
+
 {% block content %}
-<h1>Log In to your account</h1>
-<form method='POST'>
-{% include 'userregister.template.html' %}
-<input type="submit" value="Log In" class="btn btn-primary"/>
-</form>
+<div class = "d-flex justify-content-center mt-5">
+    <div class="card" style="width: 38rem;">
+        <div class="m-4">
+            <h1>Log In to your account</h1>
+            <form method='POST'>
+            {% include 'userregister.template.html' %}
+            <input type="submit" value="Log In" class="btn btn-primary"/>
+            </form>
+         </div>
+    </div>
+</div>
 {% endblock %}
