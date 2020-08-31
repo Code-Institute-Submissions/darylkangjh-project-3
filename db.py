@@ -44,81 +44,11 @@ def user_loader(email):
         return None 
         #please report error here later
 
-
- 
-
 # Home page ( this page will be static and show the various routes)
 @app.route('/')
 def home():
     return render_template('home.template.html')
 
-# Reviews (Show all reviews// user can read reviews similar to reddit post)
-@app.route('/review')
-def show_reviews():
-    all_reviews = db.review.find()
-
-    return render_template('show/all_review.template.html', review = all_reviews)
-
-
-
-# Show all available restaurants and the link to their page
-@app.route('/show-restaurants')
-def search():
-    required_restaurant_name= request.args.get('restaurant_name')
-
-    criteria={}
-
-    if required_restaurant_name:
-        criteria['name'] = {
-            '$regex': required_restaurant_name,
-            '$options':'i' 
-        }
- 
-    all_restaurants=db.restaurant.find(criteria)
-    
-    return render_template('show/all_restaurant.template.html', 
-                           restaurant =all_restaurants)
-
-# Show one restaurant after selecting their ID, (To display Menu and details for people to consider)
-@app.route('/show-restaurants/<restaurant_id>')
-def show_one_restaurant(restaurant_id):
-    one_restaurant=db.restaurant.find_one({
-        '_id':ObjectId(restaurant_id)
-    })
-
-    menu_item = db.menu_item.find()
-
-    return render_template('show/one_restaurant.template.html', restaurant=one_restaurant, menu=menu_item )
-
-
-# Create Restaurant (route)
-@app.route('/create-restaurant')
-def create_restaurant():
-    return render_template('create/create_restaurant.template.html')  
-
-# Create Restaurant (get details from form to insert to DB)
-@app.route('/create-restaurant', methods=['POST'])
-def process_create_reviews():
-    
-    # Get Information from form 
-    name = request.form.get('name')
-    location = request.form.get('location')
-    contact = request.form.get('contact')
-    email = request.form.get('email')
-
-    # Do validation later (focus on functionality first)
-
-    # Insert new restaurant 
-    new_record = {
-    'name': name,
-    'location': location,
-    'contact': contact,
-    'email': email,
-    'menuItems':[],
-    }
-
-    db.restaurant.insert_one(new_record)
-    return redirect(url_for('show_restaurants'))
 
 # Customer Login & Logout Below
 @app.route('/login')
@@ -206,6 +136,64 @@ def process_create_customers():
     return redirect(url_for("login"))
 
 # Restaurants below
+# Show all available restaurants and the link to their page
+@app.route('/show-restaurants')
+def search():
+    required_restaurant_name= request.args.get('restaurant_name')
+
+    criteria={}
+
+    if required_restaurant_name:
+        criteria['name'] = {
+            '$regex': required_restaurant_name,
+            '$options':'i' 
+        }
+ 
+    all_restaurants=db.restaurant.find(criteria)
+    
+    return render_template('show/all_restaurant.template.html', 
+                           restaurant =all_restaurants)
+
+# Show one restaurant after selecting their ID, (To display Menu and details for people to consider)
+@app.route('/show-restaurants/<restaurant_id>')
+def show_one_restaurant(restaurant_id):
+    one_restaurant=db.restaurant.find_one({
+        '_id':ObjectId(restaurant_id)
+    })
+
+    menu_item = db.menu_item.find()
+
+    return render_template('show/one_restaurant.template.html', restaurant=one_restaurant, menu=menu_item )
+
+# Create Restaurant (route)
+@app.route('/create-restaurant')
+def create_restaurant():
+    return render_template('create/create_restaurant.template.html')  
+
+# Create Restaurant (get details from form to insert to DB)
+@app.route('/create-restaurant', methods=['POST'])
+def process_create_reviews():
+    
+    # Get Information from form 
+    name = request.form.get('name')
+    location = request.form.get('location')
+    contact = request.form.get('contact')
+    email = request.form.get('email')
+
+    # Do validation later (focus on functionality first)
+
+    # Insert new restaurant 
+    new_record = {
+    'name': name,
+    'location': location,
+    'contact': contact,
+    'email': email,
+    'menuItems':[],
+    }
+
+    db.restaurant.insert_one(new_record)
+    return redirect(url_for('show_restaurants'))
+
 @app.route('/restuarants/menu/<restaurant_id>')
 def show_add_menu_items(restaurant_id):
     restaurant = db.restaurant.find_one({
@@ -228,22 +216,28 @@ def add_menu_items(restaurant_id):
 
     db.menuItems.insert_one(menuItems)
 
-    # Update the restaurant
-    menu_item = db.menuItems.find_one({
-        'name':name
-    })
-    
-    db.restaurant.update({
+    db.restaurant.update_one({
         '_id':ObjectId(restaurant_id)
     },{
             '$push':{
                 'menuItems':{
-                    'item':menu_item,
+                    'item':menuItems,
+                    'shortDes':shortDes
                 }
             }
        }
     )
     return redirect(url_for('show_restaurants'))
+
+
+
+# Reviews
+# Reviews (Show all reviews// user can read reviews similar to reddit post)
+@app.route('/review')
+def show_reviews():
+    all_reviews = db.review.find()
+
+    return render_template('show/all_review.template.html', review = all_reviews)
 
 # Review create
 @app.route('/create-review')
@@ -254,7 +248,7 @@ def create_review():
                             review = all_reviews)  
 
 
-#get data from form 
+#get data from form
 @app.route('/create-review', methods=['POST'])
 def process_create_review():
 
@@ -303,7 +297,7 @@ def process_show_update_review(review_id):
 
     db.review.update_one({
         '_id': ObjectId(review_id)
-    }, {
+    },{
         '$set': {
             'title': title,
             'review': review,
