@@ -7,46 +7,50 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="icon" href="static/image/favicon.png" type="image/gif" sizes="16x16">
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
-  <a class="navbar-brand" href="#">EatRank</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-            <div class="d-flex justify-content-start">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/review">Review</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/show-restaurants">Restaurants</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
+    <header>
+    <img src="static/image/logo-invert-01.png" alt="logo" style="width:30px; height:30px;" class="mb-2"/>
+    <a class="navbar-brand" href="/">EatRank</a>
+    </header>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
 
-            {% if current_user.is_authenticated %}
-                <li class="nav-item"> 
-                    <a class="nav-link" href="/logout">Logout</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
                 </li>
-            
-            {% else: %}
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/review">Review</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/create-customer">Sign-up</a>
+                    <a class="nav-link" href="/show-restaurants">Restaurants</a>
                 </li>
-            {% endif %}
-        </div>
-        </ul>
-  </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                
+                {% else: %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create-customer">Sign-up</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+    </div>
 </nav>
 
 <div>

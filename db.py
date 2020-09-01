@@ -298,7 +298,9 @@ def show_update_review(review_id):
     review = db.review.find_one({
         '_id': ObjectId(review_id)
     })
+
     return render_template('edit/edit_review.template.html', review=review)
+
 
 # Actual edit (Methods = post)
 @app.route('/amend-review/<review_id>', methods=["POST"])
@@ -324,6 +326,19 @@ def process_show_update_review(review_id):
     })
     return redirect(url_for('show_reviews'))
 
+@app.route('/delete-review/<review_id>')
+def show_delete_review(review_id):
+    review = db.review.find_one({
+        '_id':ObjectId(review_id)
+    })
+    return render_template('edit/delete_review.template.html', review = review)
+
+@app.route('/delete-review/<review_id>', methods=["POST"])
+def process_delete_review(review_id):
+    db.review.remove({
+        '_id':ObjectId(review_id)
+    })
+    return redirect(url_for('show_reviews'))
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':

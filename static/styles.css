@@ -42,3 +42,8 @@ h1.header-title{
 ul.nav a:hover {
     color:  #00743a !important; 
     }
+
+#navbarNavDropdown {
+    background-color:#00a653;
+    padding: 10px;
+}

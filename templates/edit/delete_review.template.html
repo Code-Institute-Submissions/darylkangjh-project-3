@@ -1,0 +1,24 @@
+  
+{% extends 'base.template.html' %}
+
+{% block content %}
+    <div class= "d-flex justify-content-center">
+    <form method="POST">
+        <div class="alert alert-danger" style="width: 100%; padding: 20px;">
+        Are you sure you want to delete review:
+        <br/>
+        <br/>
+        <small>{{review.restaurant.name}}</small>
+        <h2>{{review.title}}</h2>
+        <small>{{review.review}}</small>
+        <br/>
+        <br/>
+            <div>
+                <input type="submit" value="Yes, delete" class="btn btn-danger"/>
+                <a href="{{ url_for('show_reviews') }}" class="btn btn-primary">No</a>
+            </div>
+
+        </div>
+    </form>
+    </div>
+{% endblock %}
