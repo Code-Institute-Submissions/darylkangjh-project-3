@@ -139,9 +139,10 @@ def process_create_customers():
 # Show all available restaurants and the link to their page
 @app.route('/show-restaurants')
 def search():
-    required_restaurant_name= request.args.get('restaurant_name')
+    
+    required_restaurant_name = request.args.get('restaurant_name')
 
-    criteria={}
+    criteria = {}
 
     if required_restaurant_name:
         criteria['name'] = {
@@ -149,10 +150,10 @@ def search():
             '$options':'i' 
         }
  
-    all_restaurants=db.restaurant.find(criteria)
+    all_restaurants = db.restaurant.find(criteria)
     
     return render_template('show/all_restaurant.template.html', 
-                           restaurant =all_restaurants)
+                           restaurant = all_restaurants)
 
 # Show one restaurant after selecting their ID, (To display Menu and details for people to consider)
 @app.route('/show-restaurants/<restaurant_id>')
@@ -192,7 +193,7 @@ def process_create_reviews():
     }
 
     db.restaurant.insert_one(new_record)
-    return redirect(url_for('show_restaurants'))
+    return redirect(url_for('search'))
 
 @app.route('/restuarants/menu/<restaurant_id>')
 def show_add_menu_items(restaurant_id):
@@ -227,8 +228,7 @@ def add_menu_items(restaurant_id):
             }
        }
     )
-    return redirect(url_for('show_restaurants'))
-
+    return redirect(url_for('search'))
 
 
 # Reviews
@@ -243,9 +243,9 @@ def show_reviews():
 @app.route('/create-review')
 def create_review():
     all_reviews = db.review.find()
-
+    all_restaurants = db.restaurant.find()
     return render_template('create/create_review.template.html', 
-                            review = all_reviews)  
+                           review = all_reviews, restaurant = all_restaurants)  
 
 
 #get data from form
@@ -258,24 +258,21 @@ def process_create_review():
     ratingFood = request.form.get('ratingFood')
     ratingRes = request.form.get('ratingRes')
     cost = request.form.get('cost')
-    restaurantName = request.form.get('restaurantName')
+    restaurantName = request.form.get('restaurants')
 
     # Do validation later (focus on functionality first)
 
-
-    # Get the restaurant id 
-    # Insert new restaurant 
+    # Insert new review 
     new_review = {
     'title': title,
     'review': review,
     'ratingFood': ratingFood,
     'ratingRes': ratingRes,
     'cost': cost,
-    'restaurantName': restaurantName
     }
 
-    db.restaurant.insert_one(new_review)
-    return redirect(url_for('show_restaurants'))
+    db.review.insert_one(new_review)
+    return redirect(url_for('search'))
 
 # Review edit 
 @app.route('/amend-review/<review_id>')

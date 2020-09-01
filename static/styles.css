@@ -38,3 +38,7 @@ h1.header-title{
 .small{
     color: #00743a!important;
 }
+
+ul.nav a:hover {
+    color:  #00743a !important; 
+    }

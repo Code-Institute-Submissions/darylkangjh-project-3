@@ -1,19 +1,29 @@
+
+<!-- Jinja error for this restaurant field, please fix it  -->
+<label>Restaurant</label>
+
+<select name="restaurants">
+{% for each_restaurant in restaurant %}
+    <option value="{{each_restaurant._id}}">{{each_restaurant.name}}</option>
+{% endfor %}
+</select> 
+
+<br/>
+
 <label>Title</label>
 <input type="text" name="title" class="form-control" value="{{previous_values.title}}">
 <br/>
 <label>Review</label>
 <input type="text" name="review" class="form-control" value="{{previous_values.review}}">
 <br/>
-<label>Food Rating</label>
-<input type="text" name="ratingFood" class="form-control" value="{{previous_values.ratingFood}}">
+<label>Food Rating (from 1 to 10)</label>
+<input type="range" name="ratingFood" class="form-control" value="{{previous_values.ratingFood}}"  min="0" max="10">
 <br/>
-<label>Restaurant Rating</label>
-<input type="text" name="ratingRes" class="form-control" value="{{previous_values.ratingRes}}">
+<label>Restaurant Rating (from 1 to 10)</label>
+<input type="range" name="ratingRes" class="form-control" value="{{previous_values.ratingRes}}"  min="0" max="10">
 <br/>
-<label>Cost</label>
-<input type="text" name="cost" class="form-control" value="{{previous_values.cost}}">
+<label>Cost (from 1 to 10)</label>
+<input type="range" name="cost" class="form-control" value="{{previous_values.ratingRes}}"  min="0" max="10">
 <br/>
-<label>Restaurant</label>
-<input type="text" name="restaurantName" class="form-control" value="{{previous_values.restaurant.name}}">
-<br/>
+
 

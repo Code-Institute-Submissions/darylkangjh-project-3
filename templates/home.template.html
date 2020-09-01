@@ -1,6 +1,7 @@
 {% extends 'base.template.html' %}
 
 {% block content %}
+<!-- Jumbotron top -->
 <div class="jumbotron container-fluid">
     <div class="container d-flex align-items-start flex-column">
         <div class="m-5">
@@ -14,35 +15,95 @@
         </div>
     </div>
 </div>
-  <div class="album bg-light">
-  <br/>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="static/image/347-01.jpg">
-            <div class="card-body">
-              <p class="card-text">EatRank collects 100% genuine reviews from partner-customers just like you to provide objective & reasonable review on F&B in Singapore.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="static/image/382-01.jpg">
-            <div class="card-body">
-              <p class="card-text">Be informed on the latest F&B reviews and plan your perfect date with our app! No more regrets when it comes to dining out!</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="static/image/14044-01.jpg">
-            <div class="card-body">
-              <p class="card-text">Contribute to the community of Foodies by signing up today! Our staff will contact you once your account is verified and you can start helping others!</p>
-            </div>
-          </div>
 
-      </div>
+<!-- 3 cards brief-->
+<section class = "p-5">
+    <div class="album bg-none">
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="static/image/347-01.jpg">
+                <div class="card-body">
+                <p class="card-text">EatRank collects 100% genuine reviews from partner-customers just like you to provide objective & reasonable review on F&B in Singapore.</p>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="static/image/382-01.jpg">
+                <div class="card-body">
+                <p class="card-text">Be informed on the latest F&B reviews and plan your perfect date with our app! No more regrets when it comes to dining out!</p>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" src="static/image/14044-01.jpg">
+                <div class="card-body">
+                <p class="card-text">Contribute to the community of Foodies by signing up today! Our staff will contact you once your account is verified and you can start helping others!</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
     </div>
-  </div>
+<section>
+
+<!-- div section divide -->
+<div style="height: 10vh;">
+</div>
+
+<!-- FAQ template -->
+<section class="m-5">
+<h2 class="text-white mb-3">F.A.Q</h2>
+    <div class="accordion align-content-center" id="accordionExample">
+    <!-- Dropdwn 1 -->
+        <div class="card bg-transparent border-0 text-white">
+            <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-white text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                What EatRank?
+                </button>
+            </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show mr-5" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                EatRank is a user base crowd-sourced review platform that delivers reviews from verified and approved users! 
+                Our restaurants participate by registering directly with us and consent to their reviews.
+            </div>
+            </div>
+        </div>
+        <div class="card bg-transparent border-0 text-white ">
+            <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left text-white collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Are your reviews moderated?
+                </button>
+            </h2>
+            </div>
+            <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                Yes they are! For negative reviews, we have a fair & impartial panel of officers that work with restaurants and reviewers to reach a compromise 
+                on any disputes regarding reviews. 
+            </div>
+            </div>
+        </div>
+        <div class="card bg-transparent border-0 text-white">
+            <div class="card-header" id="headingThree">
+                <button class="btn btn-link btn-block text-left text-white collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                I am a restaurant, I would like to be listed! How do I join?
+                </button>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body d-inline">
+                If you are a registered restaurant, please send in your application via <a class="nav-link" href="/create-restaurant"> this link</a>.
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

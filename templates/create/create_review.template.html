@@ -1,15 +1,20 @@
 {% extends 'base.template.html' %}
 {% block content %}
-<h1>Write a review</h1>
 
-<form method="POST">
-{% with %}
-    {% if not previous_values %}
-        {% set previous_values = {} %}
-    {% endif %}
-{% include 'base/edit_review.template.html' %}
-{% endwith %}
- <input type="submit" value="Create" class="btn btn-primary">
-</form>
+<div class = "d-flex justify-content-center mt-5">
+    <div class="card" style="width: 38rem;">
+        <div class="m-4">
+            <h1>Write a review</h1>
+            <form method="POST">
+            {% with %}
+                {% if not previous_values %}
+                    {% set previous_values = {} %}
+                {% endif %}
+            {% include 'base/edit_review.template.html' %}
+            {% endwith %}
+            <input type="submit" value="Create" class="btn btn-primary">
+            </form>
+        </div>    
+    </div>
 </div>
 {% endblock %}
