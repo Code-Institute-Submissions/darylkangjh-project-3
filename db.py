@@ -250,6 +250,7 @@ def create_review():
 
 #get data from form
 @app.route('/create-review', methods=['POST'])
+@flask_login.login_required
 def process_create_review():
 
     # Get Information from form 
@@ -258,21 +259,38 @@ def process_create_review():
     ratingFood = request.form.get('ratingFood')
     ratingRes = request.form.get('ratingRes')
     cost = request.form.get('cost')
-    restaurantName = request.form.get('restaurants')
+    customer = flask_login.current_user.account_id
+    name = flask_login.current_user.name
+    # need to make sure it is a object id (save it in a dictionary)
+    restaurant = request.form.get('restaurants')
+
+    resid = ObjectId(restaurant)
+    # query and populate into review! 
+    restaurant_name = db.restaurant.find_one(resid)
+
+
 
     # Do validation later (focus on functionality first)
 
     # Insert new review 
     new_review = {
-    'title': title,
-    'review': review,
-    'ratingFood': ratingFood,
-    'ratingRes': ratingRes,
-    'cost': cost,
+        'title': title,
+        'review': review,
+        'ratingFood': ratingFood,
+        'ratingRes': ratingRes,
+        'cost': cost,
+        'customer': {
+            '_id':ObjectId(customer),
+            'name':name
+        },
+        'restaurant':{
+            '_id':resid,
+            'name':restaurant_name["name"]
+        }
     }
 
     db.review.insert_one(new_review)
-    return redirect(url_for('search'))
+    return redirect(url_for('show_reviews'))
 
 # Review edit 
 @app.route('/amend-review/<review_id>')
