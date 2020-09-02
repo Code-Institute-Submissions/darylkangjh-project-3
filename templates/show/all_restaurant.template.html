@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="ml-5">
-<h1>All Restaurants</h1>
+<h1 class="text-white">All Restaurants</h1>
 <small><a href='/create-restaurant'>add a restaurant</a></small>
 <form method = "GET" class="form-inline">
     <input type ="text" name="restaurant_name" class="form-control"/>
@@ -11,20 +11,22 @@
 </div>
 
 
-<div class ="container row">
+<div class ="container row d-flex justify-content-center">
     {% for each_restaurant in restaurant %}
 	<div class="card border-light m-3" style="width: 18rem;">
 		<div class="card-body">
             <small class="card-text">{{each_restaurant.location}}</small>
-			<h5 class="card-title">{{each_restaurant.name}}</h5>
+			<img class="card-img-top" src="{{each_restaurant.uploadURL}}">
+            <h5 class="card-title">{{each_restaurant.name}}</h5>
 
             <label class="h6">Location</label>
             <label class="h6">Contact</label>
 			<p>{{each_restaurant.contact}}</p>
             <p>{{each_restaurant.email}}</p>
             <br/>
-
-            <a href="/show-restaurants/{{each_restaurant._id}}" class="btn btn-primary">Menu</a>
+        <a href="/amend-restaurant/{{each_restaurant._id}}" class="btn btn-sm btn-outline-light btn-success">Edit</a>
+        <a href="#" class="btn btn-sm btn-outline-light btn-danger">Delete</a>
+            
     	</div>
 	</div>
     {% endfor%}

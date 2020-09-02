@@ -1,8 +1,19 @@
+
 {% extends 'base.template.html' %}
+
 {% block content %}
-<h1>Create a restaurant account</h1>
-
-{% include 'base/edit_restaurant.template.html' %}
-
+<div class = "d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+        <div class="m-4">
+            <h2>Edit restaurant {{restaurant.name}}</h2>
+            <form method="POST">
+            {%with %}
+                {%set previous_values=restaurant %}
+                {% include 'base/edit_restaurant.template.html' %}
+            {%endwith%}
+             <input type="submit" value="Submit" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

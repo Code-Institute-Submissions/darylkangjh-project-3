@@ -14,6 +14,8 @@ load_dotenv()
 
 app.secret_key = os.environ.get('SECRET_KEY')
 MONGO_URI=os.environ.get('MONGO_URI'),
+CLOUD_NAME = os.environ.get('CLOUD_NAME')
+UPLOAD_PRESET = os.environ.get('UPLOAD_PRESET')
 
 # Mongo Client 
 client = pymongo.MongoClient(MONGO_URI)
@@ -169,7 +171,7 @@ def show_one_restaurant(restaurant_id):
 # Create Restaurant (route)
 @app.route('/create-restaurant')
 def create_restaurant():
-    return render_template('create/create_restaurant.template.html')  
+    return render_template('create/create_restaurant.template.html', cloud_name=CLOUD_NAME , upload_preset = UPLOAD_PRESET )
 
 # Create Restaurant (get details from form to insert to DB)
 @app.route('/create-restaurant', methods=['POST'])
@@ -180,6 +182,9 @@ def process_create_reviews():
     location = request.form.get('location')
     contact = request.form.get('contact')
     email = request.form.get('email')
+    uploadURL = request.form.get('uploaded-file-url')
+    assetID = request.form.get('asset-id')
+
 
     # Do validation later (focus on functionality first)
 
@@ -190,6 +195,8 @@ def process_create_reviews():
     'contact': contact,
     'email': email,
     'menuItems':[],
+    'uploadURL':uploadURL,
+    'assetID':assetID
     }
 
     db.restaurant.insert_one(new_record)
@@ -230,6 +237,46 @@ def add_menu_items(restaurant_id):
     )
     return redirect(url_for('search'))
 
+
+
+#WIP NOW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DON"T CHANGE
+
+# Get data from form 
+@app.route('/amend-restaurant/<restaurant_id>')
+def show_update_restaurant(restaurant_id):
+    restaurant = db.restaurant.find_one({
+        '_id': ObjectId(restaurant_id)
+    })
+
+    return render_template('edit/edit_restaurant.template.html', restaurant=restaurant, cloud_name=CLOUD_NAME , upload_preset = UPLOAD_PRESET  )
+
+# Edit restaurant 
+@app.route('/amend-restaurant/<restaurant_id>', methods=["POST"])
+def process_show_update_restaurant(restaurant_id):
+
+    name = request.form.get('name')
+    location = request.form.get('location')
+    contact = request.form.get('contact')
+    email = request.form.get('email')
+    uploadURL = request.form.get('uploaded-file-url')
+    assetID = request.form.get('asset-id')
+
+    db.restaurant.update_one({
+        '_id': ObjectId(restaurant_id)
+    },{
+        '$set': {
+            'name': name,
+            'location': location,
+            'contact': contact,
+            'email': email,
+            'menuItems':[],
+            'uploadURL':uploadURL,
+            'assetID':assetID
+        }
+    })
+    return redirect(url_for('search'))
+
+# Edit restaurant end
 
 # Reviews
 # Reviews (Show all reviews// user can read reviews similar to reddit post)
@@ -339,6 +386,11 @@ def process_delete_review(review_id):
         '_id':ObjectId(review_id)
     })
     return redirect(url_for('show_reviews'))
+
+
+
+
+
 
 # "magic code" -- boilerplate
 if __name__ == '__main__':
