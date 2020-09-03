@@ -239,8 +239,6 @@ def add_menu_items(restaurant_id):
 
 
 
-#WIP NOW!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DON"T CHANGE
-
 # Get data from form 
 @app.route('/amend-restaurant/<restaurant_id>')
 def show_update_restaurant(restaurant_id):
@@ -276,7 +274,14 @@ def process_show_update_restaurant(restaurant_id):
     })
     return redirect(url_for('search'))
 
-# Edit restaurant end
+# Delete a restaurant function 
+@app.route('/delete-restaurant/<restaurant_id>')
+def show_delete_restaurant(restaurant_id):
+    restaurant=db.restaurant.find_one({
+        '_id':ObjectId(restaurant_id)
+    })
+    return render_template('edit/delete_restaurant.template.html', restaurant = restaurant)
+
 
 # Reviews
 # Reviews (Show all reviews// user can read reviews similar to reddit post)
