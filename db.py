@@ -275,12 +275,20 @@ def process_show_update_restaurant(restaurant_id):
     return redirect(url_for('search'))
 
 # Delete a restaurant function 
+
 @app.route('/delete-restaurant/<restaurant_id>')
 def show_delete_restaurant(restaurant_id):
     restaurant=db.restaurant.find_one({
         '_id':ObjectId(restaurant_id)
     })
     return render_template('edit/delete_restaurant.template.html', restaurant = restaurant)
+
+@app.route('/delete-restaurant/<restaurant_id>', methods=["POST"])
+def process_delete_restaurant(restaurant_id):
+    db.restaurant.remove({
+        '_id':ObjectId(restaurant_id)
+    })
+    return redirect(url_for('search'))
 
 
 # Reviews
