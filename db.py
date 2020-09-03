@@ -137,6 +137,12 @@ def process_create_customers():
 
     return redirect(url_for("login"))
 
+
+
+
+
+
+
 # Restaurants below
 # Show all available restaurants and the link to their page
 @app.route('/show-restaurants')
@@ -202,17 +208,8 @@ def process_create_reviews():
     db.restaurant.insert_one(new_record)
     return redirect(url_for('search'))
 
-@app.route('/restuarants/menu/<restaurant_id>')
-def show_add_menu_items(restaurant_id):
-    restaurant = db.restaurant.find_one({
-        '_id':ObjectId(restaurant_id)
-    })
 
-    return render_template('create/create_menuItems.template.html', 
-                           restaurant = restaurant)
 
-@app.route('/restuarants/menu/<restaurant_id>', methods =["POST"])
-def add_menu_items(restaurant_id):
 
     name = request.form.get('item-name')
     shortDes = request.form.get('short-des')
@@ -236,8 +233,6 @@ def add_menu_items(restaurant_id):
        }
     )
     return redirect(url_for('search'))
-
-
 
 # Get data from form 
 @app.route('/amend-restaurant/<restaurant_id>')
@@ -273,7 +268,6 @@ def process_show_update_restaurant(restaurant_id):
         }
     })
     return redirect(url_for('search'))
-
 # Delete a restaurant function 
 
 @app.route('/delete-restaurant/<restaurant_id>')
@@ -291,6 +285,11 @@ def process_delete_restaurant(restaurant_id):
     return redirect(url_for('search'))
 
 
+
+
+
+
+
 # Reviews
 # Reviews (Show all reviews// user can read reviews similar to reddit post)
 @app.route('/review')
@@ -306,7 +305,6 @@ def create_review():
     all_restaurants = db.restaurant.find()
     return render_template('create/create_review.template.html', 
                            review = all_reviews, restaurant = all_restaurants)  
-
 
 #get data from form
 @app.route('/create-review', methods=['POST'])
@@ -360,7 +358,6 @@ def show_update_review(review_id):
     })
 
     return render_template('edit/edit_review.template.html', review=review)
-
 
 # Actual edit (Methods = post)
 @app.route('/amend-review/<review_id>', methods=["POST"])

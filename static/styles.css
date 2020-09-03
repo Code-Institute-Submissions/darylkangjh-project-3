@@ -47,3 +47,8 @@ ul.nav a:hover {
     background-color:#00a653;
     padding: 10px;
 }
+
+#home-padding{
+    margin-left: 40%;
+    margin-right: 40%;
+}

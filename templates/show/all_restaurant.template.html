@@ -5,7 +5,7 @@
 <div>
 <h1 class="text-white">All Restaurants</h1>
 {% if current_user.is_authenticated %}
-<small><a href='/create-restaurant'>add a restaurant</a></small>
+<small><a href='/create-restaurant' style="color:white;">add a restaurant</a></small>
 {% endif %}
 <form method = "GET" class="form-inline">
     <input type ="text" name="restaurant_name" class="form-control"/>
