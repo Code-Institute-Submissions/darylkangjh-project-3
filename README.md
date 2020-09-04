@@ -99,11 +99,17 @@ E.R. Diagram at the end of the project 04 September 2020. Removed MenuItems & Cu
 
 ### Image Mock-Up credits for restaurant images: 
 • [The Culture Trip](https://theculturetrip.com/asia/singapore/articles/the-5-best-rooftop-restaurants-in-singapore/)
+
 • [Time Out Singapore](https://www.timeout.com/singapore/restaurants/restaurants-with-best-views-of-singapore)
+
 • [CNT Traveller](https://www.cntraveler.com/gallery/best-restaurants-in-singapore)
+
 • [Time Out Singapore](https://www.timeout.com/singapore/restaurants/most-instagrammable-cafes-in-singapore)
+
 • [DiscoverSG](https://discoversg.com/2017/01/16/fancy-cafes-singapore/)
+
 • [Burple | Review By: Khaw Han Chung](https://www.burpple.com/dishes/1055699/sumo-ramen)
+
 
 
 
