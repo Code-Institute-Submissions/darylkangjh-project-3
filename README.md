@@ -57,15 +57,17 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 
 
 ### Structure
-
 #### Site Map 
-![image](static/image/readme/site-map-01.jpg)
+
 __Site Map #1 | User Creating a Review__
 If users are logged in as a community member, they are able to follow this process to create a review. 
+![image](static/image/readme/site-map-01.jpg)
 
-![image](static/image/readme/site-map-02.jpg)
+
 __Site Map #2 | User Creating a Restaurant__
 Currently, if users would like to create a restaurant, they may follow this sitemap to create a restaurant.
+![image](static/image/readme/site-map-02.jpg)
+
 
 ### Skeleton
 
@@ -109,11 +111,32 @@ For security purposes, .env file was used together with gitignore in my working 
 While this project only involved myself (Daryl), I used GitHub for source control for any day-to-day commit. Commits to Heroku were done at the beginning as a test and, subsequently, nearing the deadline of the project. 
 
 ## Database Design 
-E.R. Diagram at the end of the project 04 September 2020. Removed MenuItems & Cuisine Type 
+E.R. Diagram at the beginning of the project 13 August 2020
+![image](static/image/readme/erd_01.png)
+
+E.R. Diagram at the end of the project 04 September 2020
+![image](static/image/readme/erd_02.png)
+
+After consulting and examination of the database, it was found to be pointless to include a MenuItems database as of now. The reason being that MenuItems are inconsistent and requires the input of restaurant owners/management to input menu items manually. This is time consuming and pointless at this stage and does not gel with the purpose of EatRank which primarily serves to deliver quality reviews to it's users.
+
+Cuisine type was also removed due to the lack of time to implement the feature. It would require a separate database as future menuItems may be stored under an array in the various Cuisine Type.
 
 ## Testing 
 
 ## Deployment 
+### To deploy on Heroku
+
+1. Download or Clone the master branch from github
+2. To list all the requirements in requirements.txt, run the following command in terminal:
+        pip3 freeze --local > requirements.txt
+3. Set Debug to False
+4. Procfile need to be created to run gunicorn upon deployment
+5. Git push to Heroku Master after all the documents are properly set up
+6. All public keys and private keys for the following need to be added to in Heroku Config Vars settings:
+            Cloudinary API
+            MongoDB URI
+            Dabatase Name | EatRank
+
 
 ## Credits 
 1. __Freepik Premium Content Provider:__ Much of this project relied on Freepik image provider for the hi-res images on the beginning of the page 
