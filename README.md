@@ -123,6 +123,16 @@ Cuisine type was also removed due to the lack of time to implement the feature. 
 
 ## Testing 
 
+### Test for logging in 
+| Step | Description            | Expected Outcomes                                                                    |
+|------|------------------------|--------------------------------------------------------------------------------------|
+| 1    | Click on Sign-up       | https://dkjh-eatrank-project3.herokuapp.com/create-customer should load              |
+| 2    | Enter your name        | Must be unique to the database with no special characters. If not, validation error. |
+| 3    | Enter your contact     | Must contain 8-digit with no country code, special characters & alphabets.           |
+| 4    | Enter your email       | Email must include a "@" character.                                                  |
+| 5    | Enter desired password | Must be 8 characters long.                                                           |
+
+
 ## Deployment 
 ### To deploy on Heroku
 
@@ -141,7 +151,7 @@ Cuisine type was also removed due to the lack of time to implement the feature. 
     >Cloudinary API
 
     >MongoDB URI
-    
+
     >Dabatase Name | EatRank
 
 
