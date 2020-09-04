@@ -139,7 +139,9 @@ Cuisine type was also removed due to the lack of time to implement the feature. 
 6. All public keys and private keys for the following need to be added to in Heroku Config Vars settings:
 
     >Cloudinary API
+
     >MongoDB URI
+    
     >Dabatase Name | EatRank
 
 
