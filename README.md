@@ -49,6 +49,61 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 2.	__User/Password validation.__ Currently, there is no restrictions/limit to what a new community member can input to create an account. Technically, a new user may leave all the fields empty to sign up for EatRank. This shouldn’t be the case. For future development, validation will be included to ensure such discrepancies do not occur. 
 3.	__User edit & profile picture page.__ Customisation of a user profile is a good feature to increase a community user’s ownership and commitment to the platform. Future development will include this feature where any logging in will be able to add a profile picture, a short-description and the date they joined EatRank. 
 4.	__Lack of date for each review.__ This is an error discovered before submission. Date & timestamp should have been included for each review.
-5.	__Bootstrap -md mosaic template error.__ One bug found during testing was the lack of responsiveness for -md for the mosaic function on the “Review” page displaying all reviews. Further investigation is warranted. 
+5.	__Bootstrap -md mosaic template error.__ One bug found during testing was the lack of responsiveness for -md for the mosaic function on the “Review” page displaying all reviews. Further investigation is warranted. Current research did not yield any results on the cause of this error.
 6.	__Refined restaurant search & tag.__ One feature that was suggested but lacked the time to implement was a more refined search for restaurants. Future updates will include a “#” function for each restaurant so community users may create or follow tag trends and display those trends to the public. Restaurant may also be segmented base on their cuisine type (e.g. Japanese, Local, Fusion, Fine-Dining…) 
 7.	__Footer sitemap.__ UX wise, a site map for the footer will be included in future updates. 
+
+
+### Structure
+
+#### Site Map 
+
+### Skeleton
+
+### Surface
+•	__Color:__ Grab Singapore (a ride hailing & food-delivery app) heavily inspired this design. Green is palatable and evokes a sense of growth, community and nature, a ode to the organic strategy the platform wants to take to grow it’s community. 
+•	__Font:__ San Serif was used to evoke a modern feel. Font used was “Helvetica Neue” provided by Bootstrap. Helvetica is great for a clean interface and the lack of a font-tail distance EatRank from the gaudiness and pomp. 
+•	__Layout:__ The site adopted a clean, hierarchical set up with a navbar consistent throughout all pages. A green background emphasizes the brand’s colour and contrast well for input forms. 
+•	__Images:__ The index page’s images were selected for their white and hints of green in the image. All images were taken from Freepik Premium Account where attribution are not required.
+
+## Technologies used
+•	HTML5
+•	CSS3
+•	Python 2.7.5
+•	Javascript (for dependencies like Toastr & Bootstrap. No code was written in Javascript for this project)
+•   Bootstrap 4.0
+•   Toastr (to be implemented in future, dependecy installed)
+•	Mongo Atlas 4.4
+•	Cloudinary 1.22.0 
+•	Flask 1.1.2
+•	Flask-Login 0.5.0
+•	Gunicorn 20.0.4 
+•	Heroku
+
+### Programming Methodology 
+For security purposes, .env file was used together with gitignore in my working environment so that Mongo Secret and Cloudinary Secret are not pushed to GitHub.
+
+While this project only involved myself (Daryl), I used GitHub for source control for any day-to-day commit. Commits to Heroku were done at the beginning as a test and, subsequently, nearing the deadline of the project. 
+
+## Database Design 
+E.R. Diagram at the end of the project 04 September 2020. Removed MenuItems & Cuisine Type 
+
+## Testing 
+
+## Deployment 
+
+## Credits 
+1. __Freepik Premium Content Provider:__ Much of this project relied on Freepik image provider for the hi-res images on the beginning of the page 
+2. __GetBootstrap.com:__ Bootstrap 4.0 was used for much of the layout for the flexbox & styling of individual reviews/restaurants,login pages and icons (did not rely on fontAwesome for this project).
+3. __Paul Chor:__ Provided the boiler plate template for Flask and mentorship for the whole of the project's life-cycle.
+
+### Image Mock-Up credits for restaurant images: 
+• [The Culture Trip](https://theculturetrip.com/asia/singapore/articles/the-5-best-rooftop-restaurants-in-singapore/)
+• [Time Out Singapore](https://www.timeout.com/singapore/restaurants/restaurants-with-best-views-of-singapore)
+• [CNT Traveller](https://www.cntraveler.com/gallery/best-restaurants-in-singapore)
+• [Time Out Singapore](https://www.timeout.com/singapore/restaurants/most-instagrammable-cafes-in-singapore)
+• [DiscoverSG](https://discoversg.com/2017/01/16/fancy-cafes-singapore/)
+• [Burple | Review By: Khaw Han Chung](https://www.burpple.com/dishes/1055699/sumo-ramen)
+
+
+
