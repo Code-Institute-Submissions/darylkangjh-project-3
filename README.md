@@ -59,7 +59,7 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 ### Structure
 
 #### Site Map 
-
+![alt text](static/image/ReadMe/Site Map -01.jpg"Site Map 1")
 ### Skeleton
 
 ### Surface
