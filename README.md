@@ -70,6 +70,7 @@ Currently, if users would like to create a restaurant, they may follow this site
 
 
 ### Skeleton
+![image](static/image/readme/wireframe.jpeg)
 
 ### Surface
 ![image](static/image/readme/color-1.png)
