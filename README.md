@@ -60,9 +60,7 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 #### Site Map 
 
 For a visual walkthrough of the website, you may the video below: 
-```
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qCnM95VPwss" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-```
+[![youtube video walkthrough](static/image/readme/youtube.png)](https://www.youtube.com/watch?v=qCnM95VPwss&feature=youtu.be)
 
 __Site Map #1 | User Creating a Review__
 If users are logged in as a community member, they are able to follow this process to create a review. 
