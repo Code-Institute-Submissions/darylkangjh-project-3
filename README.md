@@ -72,6 +72,7 @@ Currently, if users would like to create a restaurant, they may follow this site
 ### Skeleton
 
 ### Surface
+![image](static/image/readme/color-1.png)
 •	__Color:__ Grab Singapore (a ride hailing & food-delivery app) heavily inspired this design. Green is palatable and evokes a sense of growth, community and nature, a ode to the organic strategy the platform wants to take to grow it’s community. 
 
 •	__Font:__ San Serif was used to evoke a modern feel. Font used was “Helvetica Neue” provided by Bootstrap. Helvetica is great for a clean interface and the lack of a font-tail distance EatRank from the gaudiness and pomp. 
@@ -111,6 +112,8 @@ For security purposes, .env file was used together with gitignore in my working 
 While this project only involved myself (Daryl), I used GitHub for source control for any day-to-day commit. Commits to Heroku were done at the beginning as a test and, subsequently, nearing the deadline of the project. 
 
 ## Database Design 
+Due to the simplicity of relationship between various entities, MongoDB was used for it's scalability and the infancy of this project. It is a plan, if criterions/features are confirmed and stable, for this platform to adopt SQL database which will help with enforcing relationships between data strictly as compared to MongoDB. 
+
 E.R. Diagram at the beginning of the project 13 August 2020
 ![image](static/image/readme/erd_01.png)
 
@@ -120,6 +123,25 @@ E.R. Diagram at the end of the project 04 September 2020
 After consulting and examination of the database, it was found to be pointless to include a MenuItems database as of now. The reason being that MenuItems are inconsistent and requires the input of restaurant owners/management to input menu items manually. This is time consuming and pointless at this stage and does not gel with the purpose of EatRank which primarily serves to deliver quality reviews to it's users.
 
 Cuisine type was also removed due to the lack of time to implement the feature. It would require a separate database as future menuItems may be stored under an array in the various Cuisine Type.
+
+### Database relationships
+
+1. __Restaurants & Reviews| Many-to-many relationship__
+One restaurant may contain many reviews. This is the main purpose of the application to show the reviews related to the individual restaurants. The database strategy here is to use a reference as one ID can have many reviews and inserting duplicate reviews in the review database and the restaurant will only cause the restaurant to contain a wide list of array of reviews. However, the individual restaurant is embedded into the review it is for as a reference.  
+
+2. __Individuals & Reviews| Many-to-many relationship__
+Similar to the restaurant, a reference methodology was employed so that we avoid a large array/dictionary of items/objects. 
+
+## Mongo Sample documents 
+__Customer__
+![image](static/image/readme/customer.png)
+
+__Restaurant__
+![image](static/image/readme/restaurant.png)
+
+__review__
+![image](static/image/readme/review.png)
+
 
 ## Testing 
 
@@ -224,6 +246,7 @@ Once logged in, the following test below can take place. Else, these functions w
 | 3    | Visit 'Restarants' on the NavBar | https://dkjh-eatrank-project3.herokuapp.com/show-restaurants will load with the absence of delete or edit available for the user to do both actions until they log in   |
 
 
+** The current validation here are missing due to limited time. Future implementation will include validation to ensure input keyed in are as specified for testing.
 
 ## Deployment 
 ### To deploy on Heroku
