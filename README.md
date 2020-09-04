@@ -6,8 +6,8 @@ At this current stage, the idea for the platform is to have EatRank employees ad
 The platform aims to generate revenue from a small platform fee from restaurants and advertisements by “bumping” listings to the top of the page. 
 
 ## Demo
-You may test the current working page at: 
-https://dkjh-eatrank-project3.herokuapp.com/
+### You may test the current working page at: 
+    https://dkjh-eatrank-project3.herokuapp.com/
 
 ### To log-in, please use: 
     Email: pg1964@gmail.com
@@ -15,7 +15,22 @@ https://dkjh-eatrank-project3.herokuapp.com/
 
 ## UI/UX 
 
+
 ### Strategy
-__Owner Goals__
+
+#### __Owner Goals__
 The site owner aims to use the platform to on-board partner restaurants and encourage more user sign ups. To that end, the initial phase of EatRank will allow verified users to create restaurants themselves by adding in places they have visited and wish to list on EatRank. This is to prove that the concept works and gather initial traffic to the site with an adequate number of restaurant listed.
 However, this feature will be temporary and closely monitored by the Team to ensure there is no exploitation of this feature. In future, restaurants can only be added by EatRank staff.
+
+#### __User Goals__
+
+##### Scope 
+__App features for members of the public:__
+1.	A page to show all restaurants with an option to see each individual restaurant’s review. 
+2.	A page to browse all reviews in the EatRank database
+3.	A page to login
+
+__App features for EatRank Community Members:__ 
+1.	Log-in page 
+2.	Individual review page to create/update/delete reviews made by the community member 
+3.	Restaurant page to create/update/delete restaurants. 
