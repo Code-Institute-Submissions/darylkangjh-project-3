@@ -29,14 +29,22 @@
                         <p>{{each_restaurant.email}}</p>
                         <br/>
                     </div>
+                    
                 </div>
+                
             </div>
-            <div class="card-footer w-100 text-muted">
-            {% if current_user.is_authenticated %}
-                <a href="/amend-restaurant/{{each_restaurant._id}}" class="btn btn-sm btn-outline-light btn-success">Edit</a>
-                <a href="/delete-restaurant/{{each_restaurant._id}}" class="btn btn-sm btn-outline-light btn-danger">Delete</a>
-            {% endif %}
+
+   
+            <div class="card-footer w-70 text-muted">
+            <div class="row">
+         {% if current_user.is_authenticated %}
+                <a href="/amend-restaurant/{{each_restaurant._id}}" class="btn btn-sm btn-outline-light btn-warning col-md-2">Edit</a>
+                <a href="/delete-restaurant/{{each_restaurant._id}}" class="btn btn-sm btn-outline-light btn-danger col-md-2">Delete</a>
+        {% endif %}
+            <a href="#" class="btn btn-sm btn-outline-light btn-success col-md-4 offset-md-4">Reviews</a>
             </div>
+            </div>
+
         </div>
     <br/>
    <br/>

@@ -3,16 +3,31 @@
 
 <br/>
 <div>
-<h1>Menu Item for {{restaurant.name}}</h1>
 </div>
 
-<div class ="container row">
-    {% for each_item in menu %}
-	<div class="card border-light m-3" style="width: 18rem;">
-		<div class="card-body">
-			<h5 class="card-title">{{each_item.name}}</h5>
-    	</div>
-	</div>
-    {% endfor%}
-</div>
+    <div class="ml-5">
+
+    <h1 class= "text-white">Reviews for {{restaurant.name}}</h1>
+    {% for each_review in review %} 
+            <div class ="container">
+        <div class="card border-light m-3" style="width: 18rem;">
+            <div class="card-body">
+                    <h5 class="card-title">{{each_review.title}}</h5>
+                    <br/>
+                    <p class="card-text">{{each_review.review}}</p>
+                    
+                    <br/>
+
+                    <label class='h6'>Food Rating</label>
+                    <p>{{each_review.ratingFood}}</p>
+                    <label class='h6'>Restaurant Rating</label>
+                    <p>{{each_review.ratingRes}}</p>
+                    
+                    <br/>
+            </div>
+        </div>
+        {% endfor%}
+
+    </div>
+    </div>
 {% endblock %}

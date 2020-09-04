@@ -1,6 +1,12 @@
 {% extends 'base.template.html' %}
 
 
+    <ul>
+    {% for key, each_error in errors.items() %}
+        <li>{{each_error}}</li>
+    {% endfor %}
+    </ul>
+
 {% block content %}
 <div class = "d-flex justify-content-center mt-5">
     <div class="card" style="width: 38rem;">

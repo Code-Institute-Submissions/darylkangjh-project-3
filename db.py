@@ -114,6 +114,7 @@ def create_customers():
     return render_template('create/create_customer.template.html', 
                     customer = all_customer)  
 
+# DOING VALIDATION HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 @app.route('/create-customer', methods=['POST'])
 def process_create_customers():
 
@@ -123,7 +124,19 @@ def process_create_customers():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    # Do validation later (focus on functionality first)
+    
+    errors = {}
+    
+    if len(name) < 3: 
+        errors.update(
+                name_too_short="Name must be more than 2 characters"
+        )
+    if len(contact) == 8:
+        errors.update(
+            phone_number_not_valid="Please ensure your phone number is 8 digits withou any space and country code"
+        )
+    if len(errors) > 0:
+        return render_template('register.template.html', errors=errors)
 
     # Insert new customer 
     new_record = {
@@ -136,7 +149,6 @@ def process_create_customers():
     db.customer.insert_one(new_record)
 
     return redirect(url_for("login"))
-
 
 
 
@@ -163,16 +175,21 @@ def search():
     return render_template('show/all_restaurant.template.html', 
                            restaurant = all_restaurants)
 
+
 # Show one restaurant after selecting their ID, (To display Menu and details for people to consider)
 @app.route('/show-restaurants/<restaurant_id>')
 def show_one_restaurant(restaurant_id):
-    one_restaurant=db.restaurant.find_one({
-        '_id':ObjectId(restaurant_id)
+
+    review = db.review.find({
+        'restaurant._id': ObjectId(restaurant_id),
     })
 
-    menu_item = db.menu_item.find()
+    restaurant = db.restaurant.find_one({
+        '_id': ObjectId(restaurant_id),
+    })
+    return render_template('show/one_restaurant.template.html', review=review, restaurant=restaurant)
 
-    return render_template('show/one_restaurant.template.html', restaurant=one_restaurant, menu=menu_item )
+
 
 # Create Restaurant (route)
 @app.route('/create-restaurant')
