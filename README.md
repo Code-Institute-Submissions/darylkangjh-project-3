@@ -60,6 +60,13 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 
 #### Site Map 
 ![image](static/image/readme/site-map-01.jpg)
+__Site Map #1 | User Creating a Review__
+If users are logged in as a community member, they are able to follow this process to create a review. 
+
+![image](static/image/readme/site-map-02.jpg)
+__Site Map #2 | User Creating a Restaurant__
+Currently, if users would like to create a restaurant, they may follow this sitemap to create a restaurant.
+
 ### Skeleton
 
 ### Surface
