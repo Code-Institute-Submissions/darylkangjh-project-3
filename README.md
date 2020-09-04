@@ -2,7 +2,9 @@
 
 ## Introduction 
 EatRank is a crowd-source food review website that selects genuine customers from a community of food enthusiast to help review various restaurants in Singapore. The platform aims to moderate between the consumer’s need for credible information while balancing the anonymity of the internet which most famous reviews platform fail to moderate.
+
 At this current stage, the idea for the platform is to have EatRank employees add partner restaurants into our platform while reviewers are verified offline via a 1-day training programme on how to utilise the platform. 
+
 The platform aims to generate revenue from a small platform fee from restaurants and advertisements by “bumping” listings to the top of the page. 
 
 ## Demo
@@ -62,22 +64,36 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 
 ### Surface
 •	__Color:__ Grab Singapore (a ride hailing & food-delivery app) heavily inspired this design. Green is palatable and evokes a sense of growth, community and nature, a ode to the organic strategy the platform wants to take to grow it’s community. 
+
 •	__Font:__ San Serif was used to evoke a modern feel. Font used was “Helvetica Neue” provided by Bootstrap. Helvetica is great for a clean interface and the lack of a font-tail distance EatRank from the gaudiness and pomp. 
+
 •	__Layout:__ The site adopted a clean, hierarchical set up with a navbar consistent throughout all pages. A green background emphasizes the brand’s colour and contrast well for input forms. 
+
 •	__Images:__ The index page’s images were selected for their white and hints of green in the image. All images were taken from Freepik Premium Account where attribution are not required.
 
 ## Technologies used
 •	HTML5
+
 •	CSS3
+
 •	Python 2.7.5
+
 •	Javascript (for dependencies like Toastr & Bootstrap. No code was written in Javascript for this project)
+
 •   Bootstrap 4.0
+
 •   Toastr (to be implemented in future, dependecy installed)
+
 •	Mongo Atlas 4.4
+
 •	Cloudinary 1.22.0 
+
 •	Flask 1.1.2
+
 •	Flask-Login 0.5.0
+
 •	Gunicorn 20.0.4 
+
 •	Heroku
 
 ### Programming Methodology 
