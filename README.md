@@ -129,7 +129,7 @@ Cuisine type was also removed due to the lack of time to implement the feature. 
 1. Download or Clone the master branch from github
 
 2. To list all the requirements in requirements.txt, run the following command in terminal:
-    > pip3 freeze --local > requirements.txt
+    pip3 freeze --local > requirements.txt
 
 3. Set Debug to False
 4. Procfile need to be created to run gunicorn upon deployment
