@@ -133,6 +133,97 @@ Cuisine type was also removed due to the lack of time to implement the feature. 
 | 5    | Enter desired password | Must be 8 characters long.                                                           |
 | 6    | Click submit           | Page should load https://dkjh-eatrank-project3.herokuapp.com/review with a greeting! |
 
+Once logged in, the following test below can take place. Else, these functions will not be available to those who did not log in or create an account with EatRank. 
+
+### Test for CRUD Log-in features below:
+### Test for creating restaurant
+| Step  | Description               | Expected Outcomes                                                                                                                                                 |
+|-------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Click on add restaurant   | https://dkjh-eatrank-project3.herokuapp.com/create-restaurantshould load                                                                                          |
+| 2     | Enter the Restaurant name | Must be unique to the database (to be validated with Regex to ensure similar names with different cases/name conventions are accepted). If not, validation error. |
+| 3     | Enter the Location        | Must have more than 2 characters                                                                                                                                  |
+| 4     | Enter the Contact         | Must contain 8-digit with no country code, special characters & alphabets.                                                                                        |
+| 5     | Enter Email               | Email must include a "@" character.                                                                                                                               |
+| 6     | Upload a image            | Cloudinary will appear and prompt user to upload an image of the restaurant                                                                                       |
+| 7     | Click on create           | User will be brought to https://dkjh-eatrank-project3.herokuapp.com/show-restaurants. Latest addition will appear at the bottom of the page.                      |                                                                                                                        |
+
+### Test for editing restaurant
+| Step  | Description                              | Expected Outcomes                                                                                                                                                 |
+|-------|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Click on one restaurant you wish to edit | https://dkjh-eatrank-project3.herokuapp.com/amend-restaurant/<valid-user-id> will load                                                                            |
+| 2     | Edit the Restaurant name                 | Must be unique to the database (to be validated with Regex to ensure similar names with different cases/name conventions are accepted). If not, validation error. |
+| 3     | Edit the Location                        | Must have more than 2 characters                                                                                                                                  |
+| 4     | Edit the Contact                         | Must contain 8-digit with no country code, special characters & alphabets.                                                                                        |
+| 5     | Edit Email                               | Email must include a "@" character.                                                                                                                               |
+| 6     | Edit an image                            | Cloudinary will appear and prompt user to upload an image of the restaurant                                                                                       |
+| 7     | Click on submit                          | User will be brought to https://dkjh-eatrank-project3.herokuapp.com/show-restaurants. Edits will appear according to the post edited.                             |
+
+### Test for delete restaurant
+| Step  | Description                                | Expected Outcomes                                                                                                              |
+|-------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Click on one restaurant you wish to delete | https://dkjh-eatrank-project3.herokuapp.com/delete-restaurant/<valid-restaurant-id> route will load                            |
+| 2     | If you click "Yes, Delete"                 | You will be taken back to  https://dkjh-eatrank-project3.herokuapp.com/show-restaurants with the deleted restaurant entry gone |
+| 3     | If you click "No"                          | You will be taken back to https://dkjh-eatrank-project3.herokuapp.com/show-restaurants                                         |
+
+### Test for searching of restaurant
+| Step | Description                                                        | Expected Outcomes                                                                        |
+|------|--------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| 1    | Visit https://dkjh-eatrank-project3.herokuapp.com/show-restaurants | Page will display all restaurants and a search bar on the top of all restaurant listings |
+| 2    | Entered letter "A" into the search bar & clicked on search         | All listings with A in it's name appears                                                 |
+| 3    | Entered letter "1" into the search bar & clicked on search         | No listing appeared as no titles contained the number "1"                                |
+| 4    | Entered string "sumo" into the search bar & clicked on search      | "The Great Sumo Ramen" appeared as it contains the word Sumo.                            |
+| 5    | Entered a empty search in into the search bar & clicked on search  | All listing appear as it is restaurant.find() in the database.                           |
+
+### Test for creating reviews
+| Step  | Description                            | Expected Outcomes                                                                                                                 |
+|-------|----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Visit '/review' route                  | "Hello <user-name>! Would you like to contribute" will show on the top left of the page                                           |
+| 2     | Click on "Contribute" link             | https://dkjh-eatrank-project3.herokuapp.com/create-review will load to prompt user to write a review                              |
+| 3     | Select the restaurant from a drop menu | User will see a drop down menu of all the restaurant in the database                                                              |
+| 4     | Enter a title                          | User will enter a title. It cannot be left blank.                                                                                 |
+| 5     | Enter a review                         | User will enter a review. It cannot be left blank.                                                                                |
+| 6     | Use the slider to rate the food        | User will be able to slide right for a higher rating and left for a lower rating shown by a thumbs up and down icon on both ends. |
+| 7     | Use the slider to rate the restaurant  | User will be able to slide right for a higher rating and left for a lower rating shown by a thumbs up and down icon on both ends. |
+| 8     | Use the slider to rate the cost        | User will be able to slide right for a higher rating and left for a lower rating shown by a thumbs up and down icon on both ends. |
+| 9     | Click on create to create a review     | https://dkjh-eatrank-project3.herokuapp.com/review will load to show the latest reviews in the tiles (going from left-right)      |
+
+### Test for created reviews in individual restaurants
+| Step | Description                                                                  | Expected Outcomes                                                                                                                       |
+|------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| 1    | Visit the route https://dkjh-eatrank-project3.herokuapp.com/show-restaurants | Page will display all restaurants                                                                                                       |
+| 2    | Select the restaurant you just left a review for                             | https://dkjh-eatrank-project3.herokuapp.com/show-restaurants/<valid-restaurant-id> will load showing all the reviews for the restaurant |
+
+### Test for editing reviews
+| Step  | Description                                                                  | Expected Outcomes                                                                                                                        |
+|-------|------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Visit '/review' route                                                        | "Hello <user-name>! Would you like to contribute" will show on the top left of the page                                                  |
+| 2     | Click on "<user-name>" link. The user's registered name should be shown here | https://dkjh-eatrank-project3.herokuapp.com/show-customer-account/<valid-user-id> will load to show all the review the user has written. |
+| 3     | Choose the review to edit                                                    | https://dkjh-eatrank-project3.herokuapp.com/amend-review/<valid-review-id> will load to show the selected review and the past reviews    |
+| 4     | Drop down menu will be empty                                                 | User does not need to select a restaurant here.                                                                                          |
+| 5     | User may edit the title                                                      | User will may edit the title. It cannot be left blank.                                                                                   |
+| 6     | User may edit the review                                                     | User may edit the review. It cannot be left blank.                                                                                       |
+| 7     | User may edit the Food Rating by repositioning the slider                    | User will be able to slide right for a higher rating and left for a lower rating shown by a thumbs up and down icon on both ends.        |
+| 8     | User may edit the Restaurant Rating by repositioning the slider              | User will be able to slide right for a higher rating and left for a lower rating shown by a thumbs up and down icon on both ends.        |
+| 9     | User may edit the Cost Rating by repositioning the slider                    | User will be able to slide right for a higher rating and left for a lower rating shown by a thumbs up and down icon on both ends.        |
+| 10    | Click on submit                                                              | https://dkjh-eatrank-project3.herokuapp.com/review will load to show the latest reviews in the tiles (going from left-right)             |
+
+### Test for delete reviews
+| Step  | Description                                                                  | Expected Outcomes                                                                                                                        |
+|-------|------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| 1     | Visit '/review' route                                                        | "Hello <user-name>! Would you like to contribute" will show on the top left of the page                                                  |
+| 2     | Click on "<user-name>" link. The user's registered name should be shown here | https://dkjh-eatrank-project3.herokuapp.com/show-customer-account/<valid-user-id> will load to show all the review the user has written. |
+| 3     | Choose the review to delete                                                  | https://dkjh-eatrank-project3.herokuapp.com/delete-review/<valid-review-id> will load to caution deletion for the selected review.       |
+| 4     | If you click "Yes, Delete"                                                   | You will be taken back to https://dkjh-eatrank-project3.herokuapp.com/review with the deleted restaurant entry gone                      |
+| 5     | If you click "No"                                                            | You will be taken back to https://dkjh-eatrank-project3.herokuapp.com/review                                                             |
+
+### Test for logging out 
+| Step | Description                      | Expected Outcomes                                                                                                                                                       |
+|------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1    | Click on 'Logout' on the NavBar  | https://dkjh-eatrank-project3.herokuapp.com/login will load indicating successful logout                                                                                |
+| 2    | Visit 'Review' on the NavBar     | https://dkjh-eatrank-project3.herokuapp.com/review will load with the absence of the individual login missing. User us prompted to either login or create a new account |
+| 3    | Visit 'Restarants' on the NavBar | https://dkjh-eatrank-project3.herokuapp.com/show-restaurants will load with the absence of delete or edit available for the user to do both actions until they log in   |
+
+
 
 ## Deployment 
 ### To deploy on Heroku
