@@ -174,7 +174,7 @@ Once logged in, the following test below can take place. Else, these functions w
 ### Test for editing restaurant
 | Step  | Description                              | Expected Outcomes                                                                                                                                                 |
 |-------|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1     | Click on one restaurant you wish to edit | https://dkjh-eatrank-project3.herokuapp.com/amend-restaurant/<valid-user-id> will load                                                                            |
+| 1     | Click on one restaurant you wish to edit | https://dkjh-eatrank-project3.herokuapp.com/amend-restaurant/valid-user-id will load                                                                            |
 | 2     | Edit the Restaurant name                 | Must be unique to the database (to be validated with Regex to ensure similar names with different cases/name conventions are accepted). If not, validation error. |
 | 3     | Edit the Location                        | Must have more than 2 characters                                                                                                                                  |
 | 4     | Edit the Contact                         | Must contain 8-digit with no country code, special characters & alphabets.                                                                                        |
@@ -185,7 +185,7 @@ Once logged in, the following test below can take place. Else, these functions w
 ### Test for delete restaurant
 | Step  | Description                                | Expected Outcomes                                                                                                              |
 |-------|--------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| 1     | Click on one restaurant you wish to delete | https://dkjh-eatrank-project3.herokuapp.com/delete-restaurant/<valid-restaurant-id> route will load                            |
+| 1     | Click on one restaurant you wish to delete | https://dkjh-eatrank-project3.herokuapp.com/delete-restaurant/valid-restaurant-id route will load                            |
 | 2     | If you click "Yes, Delete"                 | You will be taken back to  https://dkjh-eatrank-project3.herokuapp.com/show-restaurants with the deleted restaurant entry gone |
 | 3     | If you click "No"                          | You will be taken back to https://dkjh-eatrank-project3.herokuapp.com/show-restaurants                                         |
 
@@ -215,14 +215,14 @@ Once logged in, the following test below can take place. Else, these functions w
 | Step | Description                                                                  | Expected Outcomes                                                                                                                       |
 |------|------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | 1    | Visit the route https://dkjh-eatrank-project3.herokuapp.com/show-restaurants | Page will display all restaurants                                                                                                       |
-| 2    | Select the restaurant you just left a review for                             | https://dkjh-eatrank-project3.herokuapp.com/show-restaurants/<valid-restaurant-id> will load showing all the reviews for the restaurant |
+| 2    | Select the restaurant you just left a review for                             | https://dkjh-eatrank-project3.herokuapp.com/show-restaurants/valid-restaurant-id will load showing all the reviews for the restaurant |
 
 ### Test for editing reviews
 | Step  | Description                                                                  | Expected Outcomes                                                                                                                        |
 |-------|------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 1     | Visit '/review' route                                                        | "Hello <user-name>! Would you like to contribute" will show on the top left of the page                                                  |
-| 2     | Click on "<user-name>" link. The user's registered name should be shown here | https://dkjh-eatrank-project3.herokuapp.com/show-customer-account/<valid-user-id> will load to show all the review the user has written. |
-| 3     | Choose the review to edit                                                    | https://dkjh-eatrank-project3.herokuapp.com/amend-review/<valid-review-id> will load to show the selected review and the past reviews    |
+| 1     | Visit '/review' route                                                        | "Hello user-name! Would you like to contribute" will show on the top left of the page                                                  |
+| 2     | Click on "<user-name>" link. The user's registered name should be shown here | https://dkjh-eatrank-project3.herokuapp.com/show-customer-account/valid-user-id will load to show all the review the user has written. |
+| 3     | Choose the review to edit                                                    | https://dkjh-eatrank-project3.herokuapp.com/amend-review/valid-review-id will load to show the selected review and the past reviews    |
 | 4     | Drop down menu will be empty                                                 | User does not need to select a restaurant here.                                                                                          |
 | 5     | User may edit the title                                                      | User will may edit the title. It cannot be left blank.                                                                                   |
 | 6     | User may edit the review                                                     | User may edit the review. It cannot be left blank.                                                                                       |
@@ -234,9 +234,9 @@ Once logged in, the following test below can take place. Else, these functions w
 ### Test for delete reviews
 | Step  | Description                                                                  | Expected Outcomes                                                                                                                        |
 |-------|------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| 1     | Visit '/review' route                                                        | "Hello <user-name>! Would you like to contribute" will show on the top left of the page                                                  |
-| 2     | Click on "user-name" link. The user's registered name should be shown here | https://dkjh-eatrank-project3.herokuapp.com/show-customer-account/<valid-user-id> will load to show all the review the user has written. |
-| 3     | Choose the review to delete                                                  | https://dkjh-eatrank-project3.herokuapp.com/delete-review/<valid-review-id> will load to caution deletion for the selected review.       |
+| 1     | Visit '/review' route                                                        | "Hello user-name! Would you like to contribute" will show on the top left of the page                                                  |
+| 2     | Click on "user-name" link. The user's registered name should be shown here | https://dkjh-eatrank-project3.herokuapp.com/show-customer-account/valid-user-id will load to show all the review the user has written. |
+| 3     | Choose the review to delete                                                  | https://dkjh-eatrank-project3.herokuapp.com/delete-review/valid-review-id will load to caution deletion for the selected review.       |
 | 4     | If you click "Yes, Delete"                                                   | You will be taken back to https://dkjh-eatrank-project3.herokuapp.com/review with the deleted restaurant entry gone                      |
 | 5     | If you click "No"                                                            | You will be taken back to https://dkjh-eatrank-project3.herokuapp.com/review                                                             |
 
