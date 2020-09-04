@@ -133,7 +133,6 @@ def process_create_customers():
     }
 
     db.customer.insert_one(new_record)
-
     return redirect(url_for("login"))
 
 
@@ -398,13 +397,8 @@ def process_delete_review(review_id):
     })
     return redirect(url_for('show_reviews'))
 
-
-
-
-
-
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=Falsee)
