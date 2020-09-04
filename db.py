@@ -138,7 +138,7 @@ def process_create_customers():
 
 
 
-# Restaurants below
+# Restaurants below (All restuarant routes here please)
 # Show all available restaurants and the link to their page
 @app.route('/show-restaurants')
 def search():
