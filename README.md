@@ -131,6 +131,7 @@ Cuisine type was also removed due to the lack of time to implement the feature. 
 | 3    | Enter your contact     | Must contain 8-digit with no country code, special characters & alphabets.           |
 | 4    | Enter your email       | Email must include a "@" character.                                                  |
 | 5    | Enter desired password | Must be 8 characters long.                                                           |
+| 6    | Click submit           | Page should load https://dkjh-eatrank-project3.herokuapp.com/review with a greeting! |
 
 
 ## Deployment 
