@@ -124,20 +124,6 @@ def process_create_customers():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    
-    errors = {}
-    
-    if len(name) < 3: 
-        errors.update(
-                name_too_short="Name must be more than 2 characters"
-        )
-    if len(contact) == 8:
-        errors.update(
-            phone_number_not_valid="Please ensure your phone number is 8 digits withou any space and country code"
-        )
-    if len(errors) > 0:
-        return render_template('register.template.html', errors=errors)
-
     # Insert new customer 
     new_record = {
     'name': name,
@@ -149,8 +135,6 @@ def process_create_customers():
     db.customer.insert_one(new_record)
 
     return redirect(url_for("login"))
-
-
 
 
 
