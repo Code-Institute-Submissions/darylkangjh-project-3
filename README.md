@@ -59,7 +59,7 @@ Community members (upon logging in) may delete, edit or create new restaurants t
 ### Structure
 #### Site Map 
 
-For a visual walkthrough of the website, you may the video below: 
+For a visual walkthrough of the website, you may view the video below: 
 [![youtube video walkthrough](static/image/readme/youtube.png)](https://www.youtube.com/watch?v=qCnM95VPwss&feature=youtu.be)
 
 __Site Map #1 | User Creating a Review__
