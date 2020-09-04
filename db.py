@@ -176,7 +176,7 @@ def search():
                            restaurant = all_restaurants)
 
 
-# Show one restaurant after selecting their ID, (To display Menu and details for people to consider)
+# Show one restaurant after selecting their ID, (To display the review for one particular restaurant)
 @app.route('/show-restaurants/<restaurant_id>')
 def show_one_restaurant(restaurant_id):
 
