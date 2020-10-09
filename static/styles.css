@@ -1,54 +1,56 @@
 .navbar {
-    background-color: #00a653;
-    height:10vh;
+  background-color: #00a653;
+  height: 10vh;
 }
-.navbar-brand{
-    color:white;
+.navbar-brand {
+  color: white;
 }
 .nav-link {
-    color:white;
+  color: white;
 }
 
+.nav-link :hover {
+  color: yellow;
+}
 
 body {
-    background-color:  #00a653;
+  background-color: #00a653;
 }
 
-.jumbotron{
-    background-image: url('image/1577-01.jpg');
-    background-color: rgba(0, 166, 83);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 70vh!important;
-    border-radius: 0 !important;
-    padding:0%;
-    margin:0%;
+.jumbotron {
+  background-image: url("image/1577-01.jpg");
+  background-color: rgba(0, 166, 83);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 70vh !important;
+  border-radius: 0 !important;
+  padding: 0%;
+  margin: 0%;
 }
 
-
-h1.header-title{
-    color: #00743a!important;
+h1.header-title {
+  color: #00743a !important;
 }
 
-.lead{
-    color: #00743a!important;
+.lead {
+  color: #00743a !important;
 }
 
-.small{
-    color: #00743a!important;
+.small {
+  color: #00743a !important;
 }
 
 ul.nav a:hover {
-    color:  #00743a !important; 
-    }
-
-#navbarNavDropdown {
-    background-color:#00a653;
-    padding: 10px;
+  color: #00743a !important;
 }
 
-#home-padding{
-    margin-left: 40%;
-    margin-right: 40%;
+#navbarNavDropdown {
+  background-color: #00a653;
+  padding: 10px;
+}
+
+#home-padding {
+  margin-left: 40%;
+  margin-right: 40%;
 }
