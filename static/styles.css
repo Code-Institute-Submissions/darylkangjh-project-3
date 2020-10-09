@@ -42,7 +42,7 @@ h1.header-title {
 }
 
 .small {
-  color: white !important;
+  color: #00743a !important;
 }
 
 ul.nav a:hover {
@@ -50,7 +50,7 @@ ul.nav a:hover {
 }
 
 #navbarNavDropdown {
-  background-color: white;
+  background-color: #00a653;
   padding: 10px;
 }
 
