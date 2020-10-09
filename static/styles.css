@@ -10,7 +10,7 @@
 }
 
 .nav-link :hover {
-  color: yellow;
+  color: yellow!important;
 }
 
 body {
