@@ -3,12 +3,7 @@
 
 <br/>
 <div class="ml-5">
-<h1 class="nav-link">All Reviews</h1>
-{% if current_user.is_authenticated %}
-<p class="nav-link"> Hello <a href="/show-customer-account/{{current_user.account_id}} " style="color:#00542a;">{{current_user.name}}</a>! Would you like to <a href="/create-review" style="color:#00542a;">contribute</a>?</p>
-{% else: %}
-   <div class="small"> Please <a href="/login">Login</a> | Don't have an account? <a href="/create-customer">Sign-up</a> </div>
-{% endif %}
+    <h1 class="nav-link">All Reviews</h1>
 </div>
 <div class="d-flex justify-content-center" id="home-padding">
     <div class ="card-columns" style="display: inline-block;">
