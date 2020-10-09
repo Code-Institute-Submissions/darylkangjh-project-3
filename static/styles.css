@@ -6,7 +6,7 @@
   color: white;
 }
 .nav-link {
-  color: white;
+  color: white!important;
 }
 
 a:hover {
@@ -42,7 +42,7 @@ h1.header-title {
 }
 
 .small {
-  color: #00743a !important;
+  color: white !important;
 }
 
 ul.nav a:hover {
