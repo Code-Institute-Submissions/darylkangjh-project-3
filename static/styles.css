@@ -9,7 +9,7 @@
   color: white;
 }
 
-.nav-link :hover {
+.nav-link:hover {
   color: yellow!important;
 }
 
