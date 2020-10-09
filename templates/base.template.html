@@ -21,6 +21,7 @@
       type="image/gif"
       sizes="20x20"
     />
+    <script src="https://use.fontawesome.com/a1855520a6.js"></script>
   </head>
 
   <body>
@@ -77,10 +78,11 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Dropdown link
+              <i class="fas fa-user"></i> {{current_user.name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="/create-review"><i class="fas fa-pencil-alt"></i>
+                Create a Review</a>
               <a class="dropdown-item" href="#">Another action</a>
               <a class="dropdown-item" href="#">Something else here</a>
             </div>
