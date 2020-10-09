@@ -80,10 +80,10 @@
               <i class="fa fa-user" aria-hidden="true" style="color:white;"></i> {{current_user.name}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="/create-review"></i>
+              <a class="dropdown-item" href="/create-review">
                 Create a Review</a>
               <a class="dropdown-item" href="/create-restaurant">Add a Restaurant</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="/show-customer-account/{{current_user.id}}">Your Reviews</a>
             </div>
           </li>
 

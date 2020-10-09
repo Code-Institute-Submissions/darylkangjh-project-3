@@ -46,9 +46,6 @@ def user_loader(email):
 
     else:
         return None
-        # please report error here later
-
-# Home page ( this page will be static and show the various routes)
 
 
 @app.route('/')
@@ -56,7 +53,6 @@ def home():
     return render_template('home.template.html')
 
 
-# Customer Login & Logout Below
 @app.route('/login')
 def login():
     return render_template('login.template.html')
@@ -87,8 +83,6 @@ def logout():
     flask_login.logout_user()
     return redirect(url_for('login'))
 
-# Show for all customer (admin) This is not meant for the site and should be kept "secret"
-
 
 @app.route('/show-customer-account/<customer_id>')
 def show_customer_account(customer_id):
@@ -108,6 +102,7 @@ def create_customers():
 
     return render_template('create/create_customer.template.html',
                            customer=all_customer)
+
 
 @app.route('/create-customer', methods=['POST'])
 def process_create_customers():
