@@ -90,16 +90,6 @@ def logout():
 # Show for all customer (admin) This is not meant for the site and should be kept "secret"
 
 
-@app.route('/show-customers')
-def show_customer():
-    all_customer = db.customer.find()
-
-    return render_template('show/all_customer.template.html',
-                           customer=all_customer)
-
-# Customer account and all that he/she commented on
-
-
 @app.route('/show-customer-account/<customer_id>')
 def show_customer_account(customer_id):
 
