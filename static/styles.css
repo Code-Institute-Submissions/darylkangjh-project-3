@@ -10,7 +10,11 @@
 }
 
 .nav-link:hover {
-  color: yellow!important;
+  color: orange!important;
+}
+
+.navbar-brand:hover{
+  color: orange!important;
 }
 
 body {
