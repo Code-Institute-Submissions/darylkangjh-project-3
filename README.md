@@ -269,13 +269,11 @@ Once logged in, the following test below can take place. Else, these functions w
 
 6. All public keys and private keys for the following need to be added to in Heroku Config Vars settings:
 
-    MongoDB URI
-    ```
+    * MongoDB URI
     * MongoDB Secret Key
     * Dabatase Name : EatRank
     * Cloudinary Upload Preset
     * Cloudinary Cloud Name
-    ```
 
 ## Credits 
 1. __Freepik Premium Content Provider:__ Much of this project relied on Freepik image provider for the hi-res images on the beginning of the page. As the account used is premium, no attribution was required and it is free to use.
