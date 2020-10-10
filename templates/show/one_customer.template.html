@@ -2,35 +2,35 @@
 
 {% block content %}
 
-<h1 class= "m-5 text-white">Your Reviews</h1>
+<h1 class="m-5 text-white">Your Reviews</h1>
 <div class="row m-5">
 
 
 
-{% for each_review in review %} 
+	{% for each_review in review %}
 	<div class="card border-light m-3" style="width: 18rem;">
 		<div class="card-body">
-                <h5 class="card-title">{{each_review.title}}</h5>
-                <br/>
-                <p class="card-text">{{each_review.review}}</p>
-                
-                <br/>
+			<h5 class="card-title">{{each_review.title}}</h5>
+			<br/>
+			<p class="card-text">{{each_review.review}}</p>
 
-                <label class='h6'>Food Rating</label>
-                <p>{{each_review.ratingFood}}</p>
-                <label class='h6'>Restaurant Rating</label>
-                <p>{{each_review.ratingRes}}</p>
-                
-                <br/>
-                
-                    <div class="btn-group">
-                    <a href="/amend-review/{{each_review._id}}" class="btn btn-sm btn-outline-light btn-success">Edit</a>
-                    <a href="/delete-review/{{each_review._id}}" class="btn btn-sm btn-outline-light btn-danger">Delete</a>
-                    
-                    </div>
-    	</div>
-    </div>
-    {% endfor%}
+			<br/>
+
+			<label class="h6">Food Rating</label>
+			<p>{{each_review.ratingFood}}</p>
+			<label class="h6">Restaurant Rating</label>
+			<p>{{each_review.ratingRes}}</p>
+
+			<br/>
+
+			<div class="btn-group">
+				<a href="/amend-review/{{each_review._id}}" class="btn btn-sm btn-outline-light btn-success">Edit</a>
+				<a href="/delete-review/{{each_review._id}}" class="btn btn-sm btn-outline-light btn-danger">Delete</a>
+
+			</div>
+		</div>
+	</div>
+	{% endfor%}
 
 </div>
 

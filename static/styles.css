@@ -6,15 +6,15 @@
   color: white;
 }
 .nav-link {
-  color: white!important;
+  color: white !important;
 }
 
 a:hover {
-  color: lightgray!important;
+  color: lightgray !important;
 }
 
-.navbar-brand:hover{
-  color: lightgray!important;
+.navbar-brand:hover {
+  color: lightgray !important;
 }
 
 body {

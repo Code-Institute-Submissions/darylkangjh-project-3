@@ -1,20 +1,20 @@
 {% extends 'base.template.html'%}
 
 {% block content %}
-<div class=ml-5>
-<h1 style="color: white;"> Search for restaurants </h1>
+<div class="ml-5">
+	<h1 style="color: white;"> Search for restaurants </h1>
 
 
-<br/>
-<br/>
-<h3 style="color: white;">Restaurants</h3>
+	<br/>
+	<br/>
+	<h3 style="color: white;">Restaurants</h3>
 
-<ul>
+	<ul>
 
-    {% for r in restaurant%}
-        <li style="color: white;"> {{r.name}}</li>
-    {% endfor %}
+		{% for r in restaurant%}
+		<li style="color: white;"> {{r.name}}</li>
+		{% endfor %}
 
-</ul>
+	</ul>
 </div>
 {% endblock %}

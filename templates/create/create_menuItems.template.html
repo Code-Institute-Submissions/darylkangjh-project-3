@@ -1,18 +1,18 @@
 {% extends 'base.template.html' %}
 {% block content %}
 <h1>Menu Item</h1>
-<h3 class= small>{{restaurant.name}}</h3>
+<h3 class=small>{{restaurant.name}}</h3>
 
 </br>
 <form method="POST">
-<label>Item Name</label>
-<input type="text" name="item-name" class="form-control">
-<br/>
-<label>Short Description</label>
-<input type="text" name="short-des" class="form-control">
-<br/>
-<input type="submit" value="Create" class="btn btn-primary">
+	<label>Item Name</label>
+	<input type="text" name="item-name" class="form-control">
+	<br/>
+	<label>Short Description</label>
+	<input type="text" name="short-des" class="form-control">
+	<br/>
+	<input type="submit" value="Create" class="btn btn-primary">
 </form>
 
-</div>
-{% endblock %}
+	</div>
+	{% endblock %}

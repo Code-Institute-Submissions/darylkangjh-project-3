@@ -1,19 +1,18 @@
-
 {% extends 'base.template.html' %}
 
 {% block content %}
-<div class = "d-flex justify-content-center">
-    <div class="card" style="width: 40rem;">
-        <div class="m-4">
-            <h2>Edit review {{review.restaurant.name}}</h2>
-            <form method="POST">
-            {%with %}
-                {%set previous_values=review %}
-                {% include 'base/edit_review.template.html' %}
-            {%endwith%}
-             <input type="submit" value="Submit" class="btn btn-primary">
+<div class="d-flex justify-content-center">
+	<div class="card" style="width: 40rem;">
+		<div class="m-4">
+			<h2>Edit review {{review.restaurant.name}}</h2>
+			<form method="POST">
+				{%with %}
+				{%set previous_values=review %}
+				{% include 'base/edit_review.template.html' %}
+				{%endwith%}
+				<input type="submit" value="Submit" class="btn btn-primary">
             </form>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 {% endblock %}

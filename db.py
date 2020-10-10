@@ -2,10 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 import pymongo
 import os
 import flask_login
-from passlib.hash import pbkdf2_sha256
 from dotenv import load_dotenv
 from bson.objectid import ObjectId
-import datetime
 
 app = Flask(__name__)
 
@@ -17,7 +15,6 @@ MONGO_URI = os.environ.get('MONGO_URI'),
 CLOUD_NAME = os.environ.get('CLOUD_NAME')
 UPLOAD_PRESET = os.environ.get('UPLOAD_PRESET')
 
-# Mongo Client
 client = pymongo.MongoClient(MONGO_URI)
 db = client['EatRank']
 
@@ -91,7 +88,6 @@ def show_customer_account(customer_id):
         'customer._id': ObjectId(customer_id),
     })
 
-    # print(flask_login.current_user.is_authenticated)
     return render_template('show/one_customer.template.html', review=all_reviews)
 
 
@@ -107,13 +103,11 @@ def create_customers():
 @app.route('/create-customer', methods=['POST'])
 def process_create_customers():
 
-    # Get Information from form
     name = request.form.get('name')
     contact = request.form.get('contact')
     email = request.form.get('email')
     password = request.form.get('password')
 
-    # Insert new customer
     new_record = {
         'name': name,
         'email': email,
@@ -125,8 +119,6 @@ def process_create_customers():
     return redirect(url_for("login"))
 
 
-# Restaurants below (All restuarant routes here please)
-# Show all available restaurants and the link to their page
 @app.route('/show-restaurants')
 def search():
 
@@ -146,7 +138,6 @@ def search():
                            restaurant=all_restaurants)
 
 
-# Show one restaurant after selecting their ID, (To display the review for one particular restaurant)
 @app.route('/show-restaurants/<restaurant_id>')
 def show_one_restaurant(restaurant_id):
 
@@ -160,18 +151,14 @@ def show_one_restaurant(restaurant_id):
     return render_template('show/one_restaurant.template.html', review=review, restaurant=restaurant)
 
 
-# Create Restaurant (route)
 @app.route('/create-restaurant')
 def create_restaurant():
     return render_template('create/create_restaurant.template.html', cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
-
-# Create Restaurant (get details from form to insert to DB)
 
 
 @app.route('/create-restaurant', methods=['POST'])
 def process_create_reviews():
 
-    # Get Information from form
     name = request.form.get('name')
     location = request.form.get('location')
     contact = request.form.get('contact')
@@ -179,9 +166,6 @@ def process_create_reviews():
     uploadURL = request.form.get('uploaded-file-url')
     assetID = request.form.get('asset-id')
 
-    # Do validation later (focus on functionality first)
-
-    # Insert new restaurant
     new_record = {
         'name': name,
         'location': location,
@@ -218,8 +202,6 @@ def process_create_reviews():
     )
     return redirect(url_for('search'))
 
-# Get data from form
-
 
 @app.route('/amend-restaurant/<restaurant_id>')
 def show_update_restaurant(restaurant_id):
@@ -227,9 +209,9 @@ def show_update_restaurant(restaurant_id):
         '_id': ObjectId(restaurant_id)
     })
 
-    return render_template('edit/edit_restaurant.template.html', restaurant=restaurant, cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
-
-# Edit restaurant
+    return render_template('edit/edit_restaurant.template.html',
+                             restaurant=restaurant,cloud_name=CLOUD_NAME,
+                             upload_preset=UPLOAD_PRESET)
 
 
 @app.route('/amend-restaurant/<restaurant_id>', methods=["POST"])
@@ -256,7 +238,6 @@ def process_show_update_restaurant(restaurant_id):
         }
     })
     return redirect(url_for('search'))
-# Delete a restaurant function
 
 
 @app.route('/delete-restaurant/<restaurant_id>')
@@ -275,15 +256,11 @@ def process_delete_restaurant(restaurant_id):
     return redirect(url_for('search'))
 
 
-# Reviews
-# Reviews (Show all reviews// user can read reviews similar to reddit post)
 @app.route('/review')
 def show_reviews():
     all_reviews = db.review.find()
 
     return render_template('show/all_review.template.html', review=all_reviews)
-
-# Review create
 
 
 @app.route('/create-review')
@@ -293,14 +270,11 @@ def create_review():
     return render_template('create/create_review.template.html',
                            review=all_reviews, restaurant=all_restaurants)
 
-# get data from form
-
 
 @app.route('/create-review', methods=['POST'])
 @flask_login.login_required
 def process_create_review():
 
-    # Get Information from form
     title = request.form.get('title')
     review = request.form.get('review')
     ratingFood = request.form.get('ratingFood')
@@ -308,16 +282,11 @@ def process_create_review():
     cost = request.form.get('cost')
     customer = flask_login.current_user.account_id
     name = flask_login.current_user.name
-    # need to make sure it is a object id (save it in a dictionary)
     restaurant = request.form.get('restaurants')
 
     resid = ObjectId(restaurant)
-    # query and populate into review!
     restaurant_name = db.restaurant.find_one(resid)
 
-    # Do validation later (focus on functionality first)
-
-    # Insert new review
     new_review = {
         'title': title,
         'review': review,
@@ -337,8 +306,6 @@ def process_create_review():
     db.review.insert_one(new_review)
     return redirect(url_for('show_reviews'))
 
-# Review edit
-
 
 @app.route('/amend-review/<review_id>')
 def show_update_review(review_id):
@@ -347,8 +314,6 @@ def show_update_review(review_id):
     })
 
     return render_template('edit/edit_review.template.html', review=review)
-
-# Actual edit (Methods = post)
 
 
 @app.route('/amend-review/<review_id>', methods=["POST"])

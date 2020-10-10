@@ -1,33 +1,33 @@
 {% extends 'base.template.html' %}
 {% block content %}
 
-<div class = "d-flex justify-content-center mt-5">
-    <div class="card" style="width: 38rem;">
-        <div class="m-4">
-            <h1>Create a restaurant account</h1>
-                <form method="POST">
-                    <label>Restaurant Name</label>
-                    <input type="text" name="name" class="form-control">
-                    <br/>
-                    <label>Location</label>
-                    <input type="text" name="location" class="form-control">
-                    <br/>
-                    <label>Contact</label>
-                    <input type="text" name="contact" class="form-control">
-                    <br/>
-                    <label>Email</label>
-                    <input type="text" name="email" class="form-control">
-                    <br/>
-                    <div>
-                        <a id="upload_widget" class="cloudinary-button">Upload Files</a>
-                    </div>
-                    <input type="hidden" id="uploaded-file-url" name="uploaded-file-url"/>
-                    <input type="hidden" id="asset-id" name="asset-id"/>
-                    <br/>
-                    <input type="submit" value="Create" class="btn btn-primary">
+<div class="d-flex justify-content-center mt-5">
+	<div class="card" style="width: 38rem;">
+		<div class="m-4">
+			<h1>Create a restaurant account</h1>
+			<form method="POST">
+				<label>Restaurant Name</label>
+				<input type="text" name="name" class="form-control">
+				<br/>
+				<label>Location</label>
+				<input type="text" name="location" class="form-control">
+				<br/>
+				<label>Contact</label>
+				<input type="text" name="contact" class="form-control">
+				<br/>
+				<label>Email</label>
+				<input type="text" name="email" class="form-control">
+				<br/>
+				<div>
+					<a id="upload_widget" class="cloudinary-button">Upload Files</a>
+				</div>
+				<input type="hidden" id="uploaded-file-url" name="uploaded-file-url"/>
+				<input type="hidden" id="asset-id" name="asset-id"/>
+				<br/>
+				<input type="submit" value="Create" class="btn btn-primary">
                     </form>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}
