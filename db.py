@@ -88,7 +88,8 @@ def show_customer_account(customer_id):
         'customer._id': ObjectId(customer_id),
     })
 
-    return render_template('show/one_customer.template.html', review=all_reviews)
+    return render_template('show/one_customer.template.html',
+                            review=all_reviews)
 
 
 # Create a customer account
@@ -148,12 +149,14 @@ def show_one_restaurant(restaurant_id):
     restaurant = db.restaurant.find_one({
         '_id': ObjectId(restaurant_id),
     })
-    return render_template('show/one_restaurant.template.html', review=review, restaurant=restaurant)
+    return render_template('show/one_restaurant.template.html',
+                            review=review, restaurant=restaurant)
 
 
 @app.route('/create-restaurant')
 def create_restaurant():
-    return render_template('create/create_restaurant.template.html', cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
+    return render_template('create/create_restaurant.template.html',
+                            cloud_name=CLOUD_NAME, upload_preset=UPLOAD_PRESET)
 
 
 @app.route('/create-restaurant', methods=['POST'])
@@ -245,7 +248,8 @@ def show_delete_restaurant(restaurant_id):
     restaurant = db.restaurant.find_one({
         '_id': ObjectId(restaurant_id)
     })
-    return render_template('edit/delete_restaurant.template.html', restaurant=restaurant)
+    return render_template('edit/delete_restaurant.template.html',
+                            restaurant=restaurant)
 
 
 @app.route('/delete-restaurant/<restaurant_id>', methods=["POST"])
