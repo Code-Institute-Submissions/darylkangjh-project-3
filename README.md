@@ -259,8 +259,9 @@ Once logged in, the following test below can take place. Else, these functions w
 1. Download or Clone the master branch from github
 
 2. To list all the requirements in requirements.txt, run the following command in terminal:
-    > pip3 freeze --local > requirements.txt
-
+    ```
+     pip3 freeze --local > requirements.txt
+    ````
 3. Set Debug to False
 4. Procfile need to be created to run gunicorn upon deployment
 
@@ -268,11 +269,11 @@ Once logged in, the following test below can take place. Else, these functions w
 
 6. All public keys and private keys for the following need to be added to in Heroku Config Vars settings:
 
-    >Cloudinary API
-
-    >MongoDB URI
-
-    >Dabatase Name | EatRank
+    > MongoDB URI
+    > MongoDB Secret Key
+    > Dabatase Name : EatRank
+    > Cloudinary Upload Preset
+    > Cloudinary Cloud Name
 
 
 ## Credits 
